@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs } from '@/lib/data'
-import { BLOG_POSTS } from '@/lib/blog'
+import { getRecentPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://aitools-ar.vercel.app'
 
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  const blogPages = BLOG_POSTS.map((post) => ({
+  const blogPages = getRecentPosts(100).map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,

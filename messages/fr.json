@@ -141,7 +141,15 @@
     "minRead": "min de lecture",
     "recentPosts": "Articles récents",
     "share": "Partager :",
-    "backToBlog": "← Retour au blog"
+    "backToBlog": "← Retour au blog",
+    "breadcrumbHome": "Accueil",
+    "shareLabel": "Partager cet article:",
+    "shareX": "Tweeter",
+    "ctaTitle": "Essayez les outils vous-même",
+    "ctaSubtitle": "Comparez les meilleurs outils IA gratuitement",
+    "ctaButton": "Explorer les outils",
+    "relatedArticles": "Articles connexes",
+    "popularComparisons": "Comparaisons populaires"
   },
   "submit": {
     "title": "Soumettre un outil IA",

@@ -141,7 +141,15 @@
     "minRead": "دقائق قراءة",
     "recentPosts": "مقالات أخيرة",
     "share": "شارك المقال:",
-    "backToBlog": "← العودة للمدونة"
+    "backToBlog": "← العودة للمدونة",
+    "breadcrumbHome": "الرئيسية",
+    "shareLabel": "شارك المقال:",
+    "shareX": "تغريد",
+    "ctaTitle": "جرّب الأدوات بنفسك",
+    "ctaSubtitle": "قارن أفضل أدوات AI مجاناً",
+    "ctaButton": "استكشف الأدوات",
+    "relatedArticles": "مقالات ذات صلة",
+    "popularComparisons": "مقارنات شائعة"
   },
   "submit": {
     "title": "اقترح أداة AI",

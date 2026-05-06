@@ -141,7 +141,15 @@
     "minRead": "Min. Lesezeit",
     "recentPosts": "Neueste Beiträge",
     "share": "Teilen:",
-    "backToBlog": "← Zurück zum Blog"
+    "backToBlog": "← Zurück zum Blog",
+    "breadcrumbHome": "Startseite",
+    "shareLabel": "Artikel teilen:",
+    "shareX": "Tweeten",
+    "ctaTitle": "Testen Sie die Tools selbst",
+    "ctaSubtitle": "Vergleichen Sie die besten KI-Tools kostenlos",
+    "ctaButton": "Tools erkunden",
+    "relatedArticles": "Verwandte Artikel",
+    "popularComparisons": "Beliebte Vergleiche"
   },
   "submit": {
     "title": "KI-Tool einreichen",

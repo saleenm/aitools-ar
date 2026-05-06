@@ -141,7 +141,15 @@
     "minRead": "min read",
     "recentPosts": "Recent Posts",
     "share": "Share:",
-    "backToBlog": "← Back to Blog"
+    "backToBlog": "← Back to Blog",
+    "breadcrumbHome": "Home",
+    "shareLabel": "Share this article:",
+    "shareX": "Tweet",
+    "ctaTitle": "Try the Tools Yourself",
+    "ctaSubtitle": "Compare the best AI tools for free",
+    "ctaButton": "Explore Tools",
+    "relatedArticles": "Related Articles",
+    "popularComparisons": "Popular Comparisons"
   },
   "submit": {
     "title": "Submit an AI Tool",

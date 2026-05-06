@@ -141,7 +141,15 @@
     "minRead": "dk okuma",
     "recentPosts": "Son Yazılar",
     "share": "Paylaş:",
-    "backToBlog": "← Bloga dön"
+    "backToBlog": "← Bloga dön",
+    "breadcrumbHome": "Anasayfa",
+    "shareLabel": "Bu makaleyi paylaş:",
+    "shareX": "Tweetle",
+    "ctaTitle": "Araçları kendiniz deneyin",
+    "ctaSubtitle": "En iyi yapay zeka araçlarını ücretsiz karşılaştırın",
+    "ctaButton": "Araçları Keşfet",
+    "relatedArticles": "İlgili Makaleler",
+    "popularComparisons": "Popüler Karşılaştırmalar"
   },
   "submit": {
     "title": "Yapay Zeka Aracı Öner",

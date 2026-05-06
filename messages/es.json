@@ -141,7 +141,15 @@
     "minRead": "min de lectura",
     "recentPosts": "Publicaciones recientes",
     "share": "Compartir:",
-    "backToBlog": "← Volver al blog"
+    "backToBlog": "← Volver al blog",
+    "breadcrumbHome": "Inicio",
+    "shareLabel": "Compartir este artículo:",
+    "shareX": "Tuitear",
+    "ctaTitle": "Prueba las herramientas tú mismo",
+    "ctaSubtitle": "Compara las mejores herramientas de IA gratis",
+    "ctaButton": "Explorar herramientas",
+    "relatedArticles": "Artículos relacionados",
+    "popularComparisons": "Comparaciones populares"
   },
   "submit": {
     "title": "Enviar una herramienta de IA",
