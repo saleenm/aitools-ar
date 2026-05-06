@@ -1,8 +1,29 @@
 import Link from 'next/link'
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { getRecentPosts } from '@/lib/blog'
+import { buildAlternates } from '@/lib/seo'
 
 interface Props { params: { locale: string } }
+
+const META: Record<string, { title: string; description: string }> = {
+  ar: { title: 'مدونة أدوات AI | مقارنات ومراجعات', description: 'أحدث مقالات ومراجعات أدوات الذكاء الاصطناعي — مقارنات تفصيلية وأدلة عملية.' },
+  en: { title: 'AI Tools Blog | Comparisons & Reviews', description: 'Latest articles and reviews on AI tools — detailed comparisons and practical guides.' },
+  fr: { title: 'Blog Outils IA | Comparaisons et avis', description: 'Derniers articles et avis sur les outils IA — comparaisons détaillées et guides pratiques.' },
+  es: { title: 'Blog de Herramientas IA | Comparaciones y reseñas', description: 'Últimos artículos y reseñas sobre herramientas de IA — comparaciones detalladas y guías prácticas.' },
+  tr: { title: 'Yapay Zeka Araçları Blog | Karşılaştırmalar ve İncelemeler', description: "Yapay zeka araçları hakkında son makaleler ve incelemeler — ayrıntılı karşılaştırmalar ve pratik kılavuzlar." },
+  de: { title: 'KI-Tools Blog | Vergleiche und Bewertungen', description: 'Neueste Artikel und Bewertungen zu KI-Tools — detaillierte Vergleiche und praktische Leitfäden.' },
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const m = META[params.locale] || META.en
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates('/blog'),
+    openGraph: { title: m.title, description: m.description, type: 'website' },
+  }
+}
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = params

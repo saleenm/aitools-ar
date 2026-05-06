@@ -65,7 +65,8 @@
     "relatedTools": "Herramientas similares",
     "free": "Gratis",
     "perMonth": "/mes",
-    "new": "NUEVO"
+    "new": "NUEVO",
+    "breadcrumbHome": "Inicio"
   },
   "reviews": {
     "title": "Reseñas de usuarios",

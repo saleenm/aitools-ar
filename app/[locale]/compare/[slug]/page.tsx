@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { getToolsForCompare } from '@/lib/data'
 import { PRICING_COLORS, CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
+import { buildAlternates } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,6 +17,24 @@ function parseSlugs(slug: string): [string, string] | null {
   const idx = slug.indexOf('-vs-')
   if (idx === -1) return null
   return [slug.slice(0, idx), slug.slice(idx + 4)]
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = params
+  const parsed = parseSlugs(slug)
+  if (!parsed) return {}
+  const [s1, s2] = parsed
+  const [t1, t2] = await getToolsForCompare(s1, s2)
+  if (!t1 || !t2) return {}
+  const title = `${t1.name} vs ${t2.name} — AI Tools`
+  const description = `Compare ${t1.name} and ${t2.name}: features, pricing, ratings, pros and cons.`
+  return {
+    title,
+    description,
+    alternates: buildAlternates(`/compare/${slug}`),
+    openGraph: { title, description, type: 'article' },
+    twitter: { card: 'summary_large_image', title, description },
+  }
 }
 
 export async function generateStaticParams() {

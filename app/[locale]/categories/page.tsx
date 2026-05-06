@@ -1,11 +1,32 @@
 import Link from 'next/link'
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { getTools } from '@/lib/data'
 import { CATEGORY_ICONS, CATEGORY_KEYS } from '@/lib/types'
+import { buildAlternates } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 
 interface Props { params: { locale: string } }
+
+const META: Record<string, { title: string; description: string }> = {
+  ar: { title: 'فئات أدوات AI | تصفح حسب التخصص', description: 'تصفح أدوات الذكاء الاصطناعي حسب الفئة: محادثة، صور، فيديو، كتابة، برمجة والمزيد.' },
+  en: { title: 'AI Tool Categories | Browse by Specialty', description: 'Browse AI tools by category: chatbots, image generation, video, writing, coding, and more.' },
+  fr: { title: 'Catégories d\'outils IA | Parcourir par spécialité', description: 'Parcourez les outils IA par catégorie: chatbots, génération d\'images, vidéo, rédaction, code et plus.' },
+  es: { title: 'Categorías de Herramientas IA | Explorar por especialidad', description: 'Explora herramientas de IA por categoría: chatbots, generación de imágenes, vídeo, escritura, código y más.' },
+  tr: { title: 'Yapay Zeka Araç Kategorileri | Uzmanlığa Göre Gözat', description: "Yapay zeka araçlarını kategoriye göre inceleyin: sohbet botları, görsel üretimi, video, yazma, kodlama ve daha fazlası." },
+  de: { title: 'KI-Tool-Kategorien | Nach Fachgebiet suchen', description: 'KI-Tools nach Kategorie durchsuchen: Chatbots, Bildgenerierung, Video, Schreiben, Coding und mehr.' },
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const m = META[params.locale] || META.en
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates('/categories'),
+    openGraph: { title: m.title, description: m.description, type: 'website' },
+  }
+}
 
 export default async function CategoriesPage({ params }: Props) {
   const { locale } = params

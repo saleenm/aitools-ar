@@ -11,6 +11,19 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   metadataBase: new URL('https://aitools-ar.vercel.app'),
   robots: { index: true, follow: true },
+  keywords: ['AI tools', 'artificial intelligence', 'ChatGPT', 'Gemini', 'Midjourney', 'أدوات ذكاء اصطناعي', 'compare AI'],
+  authors: [{ name: 'AI Tools' }],
+  creator: 'AI Tools',
+  publisher: 'AI Tools',
+  openGraph: {
+    siteName: 'AI Tools',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'AI Tools' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

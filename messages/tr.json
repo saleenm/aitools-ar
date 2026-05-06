@@ -65,7 +65,8 @@
     "relatedTools": "Benzer Araçlar",
     "free": "Ücretsiz",
     "perMonth": "/ay",
-    "new": "YENİ"
+    "new": "YENİ",
+    "breadcrumbHome": "Anasayfa"
   },
   "reviews": {
     "title": "Kullanıcı Yorumları",

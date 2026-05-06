@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { getToolBySlug, getTools } from '@/lib/data'
@@ -6,11 +7,37 @@ import { CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
 import AdUnit from '@/components/AdUnit'
+import { buildAlternates, buildToolJsonLd } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 
 interface Props {
   params: { locale: string; slug: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = params
+  const tool = await getToolBySlug(slug)
+  if (!tool) return {}
+
+  const isArabic = locale === 'ar'
+  const tagline = !isArabic && tool.tagline_en ? tool.tagline_en : tool.tagline_ar
+  const title = `${tool.name} — ${tagline} | AI Tools`
+  const description = !isArabic && tool.tagline_en ? tool.tagline_en : tool.description_ar.slice(0, 160)
+
+  return {
+    title,
+    description,
+    alternates: buildAlternates(`/tools/${slug}`),
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `https://aitools-ar.vercel.app/${locale}/tools/${slug}`,
+      siteName: 'AI Tools',
+    },
+    twitter: { card: 'summary_large_image', title, description },
+  }
 }
 
 export default async function ToolPage({ params }: Props) {
@@ -26,13 +53,15 @@ export default async function ToolPage({ params }: Props) {
 
   const base = `/${locale}`
   const related = allTools.filter((t) => t.category === tool.category && t.slug !== tool.slug).slice(0, 4)
+  const jsonLd = buildToolJsonLd(tool)
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="max-w-5xl mx-auto px-4 py-10">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-          <Link href={base} className="hover:text-violet-400 transition-colors">Home</Link>
+          <Link href={base} className="hover:text-violet-400 transition-colors">{t('breadcrumbHome')}</Link>
           <span>/</span>
           <Link href={`${base}?category=${tool.category}`} className="hover:text-violet-400 transition-colors">
             {tc(tool.category)}

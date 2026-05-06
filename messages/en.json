@@ -65,7 +65,8 @@
     "relatedTools": "Similar Tools",
     "free": "Free",
     "perMonth": "/month",
-    "new": "NEW"
+    "new": "NEW",
+    "breadcrumbHome": "Home"
   },
   "reviews": {
     "title": "User Reviews",

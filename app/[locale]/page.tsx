@@ -1,11 +1,40 @@
 import { Suspense } from 'react'
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import FilterBar from '@/components/FilterBar'
 import ToolCard from '@/components/ToolCard'
 import { getTools } from '@/lib/data'
+import { buildAlternates, buildWebsiteJsonLd } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
+
+const META: Record<string, { title: string; description: string }> = {
+  ar: { title: 'أدوات AI | دليل أفضل أدوات الذكاء الاصطناعي', description: 'اكتشف وقارن أفضل أدوات الذكاء الاصطناعي: ChatGPT، Gemini، Midjourney، Claude وأكثر من 100 أداة مع مراجعات شاملة.' },
+  en: { title: 'AI Tools | Best Artificial Intelligence Tools Directory', description: 'Discover and compare the best AI tools: ChatGPT, Gemini, Midjourney, Claude and 100+ tools with comprehensive reviews.' },
+  fr: { title: 'Outils IA | Répertoire des meilleurs outils d\'intelligence artificielle', description: 'Découvrez et comparez les meilleurs outils IA: ChatGPT, Gemini, Midjourney, Claude et plus de 100 outils.' },
+  es: { title: 'Herramientas IA | Directorio de las mejores herramientas de inteligencia artificial', description: 'Descubre y compara las mejores herramientas de IA: ChatGPT, Gemini, Midjourney, Claude y más de 100 herramientas.' },
+  tr: { title: 'Yapay Zeka Araçları | En İyi Yapay Zeka Araçları Dizini', description: "En iyi yapay zeka araçlarını keşfedin ve karşılaştırın: ChatGPT, Gemini, Midjourney, Claude ve 100'den fazla araç." },
+  de: { title: 'KI-Tools | Verzeichnis der besten KI-Tools', description: 'Entdecken und vergleichen Sie die besten KI-Tools: ChatGPT, Gemini, Midjourney, Claude und über 100 Tools.' },
+}
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const { locale } = params
+  const m = META[locale] || META.en
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates(''),
+    openGraph: {
+      title: m.title,
+      description: m.description,
+      type: 'website',
+      url: `https://aitools-ar.vercel.app/${locale}`,
+      siteName: 'AI Tools',
+    },
+    twitter: { card: 'summary_large_image', title: m.title, description: m.description },
+  }
+}
 
 interface PageProps {
   params: { locale: string }
@@ -24,8 +53,11 @@ export default async function HomePage({ params, searchParams }: PageProps) {
   const isFiltered = searchParams.category || searchParams.pricing || searchParams.q
   const base = `/${locale}`
 
+  const jsonLd = buildWebsiteJsonLd()
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
       {!isFiltered && (
         <section className="relative overflow-hidden bg-gray-950 pt-20 pb-16 px-4 text-center">

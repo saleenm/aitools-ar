@@ -1,8 +1,29 @@
 export const dynamic = 'force-dynamic'
 
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { getTools } from '@/lib/data'
 import CompareSelector from '@/components/CompareSelector'
+import { buildAlternates } from '@/lib/seo'
+
+const META: Record<string, { title: string; description: string }> = {
+  ar: { title: 'مقارنة أدوات AI | قارن جانباً إلى جانب', description: 'قارن بين أدوات الذكاء الاصطناعي جانباً إلى جانب — المميزات، الأسعار، التقييمات.' },
+  en: { title: 'Compare AI Tools | Side-by-Side Comparison', description: 'Compare AI tools side-by-side — features, pricing, ratings.' },
+  fr: { title: 'Comparer les outils IA | Comparaison côte à côte', description: 'Comparez les outils IA côte à côte — fonctionnalités, tarifs, notes.' },
+  es: { title: 'Comparar herramientas IA | Comparación lado a lado', description: 'Compara herramientas de IA lado a lado — características, precios, calificaciones.' },
+  tr: { title: 'Yapay Zeka Araçlarını Karşılaştır | Yan Yana Karşılaştırma', description: "Yapay zeka araçlarını yan yana karşılaştırın — özellikler, fiyatlandırma, puanlar." },
+  de: { title: 'KI-Tools vergleichen | Direktvergleich', description: 'KI-Tools direkt vergleichen — Funktionen, Preise, Bewertungen.' },
+}
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const m = META[params.locale] || META.en
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates('/compare'),
+    openGraph: { title: m.title, description: m.description, type: 'website' },
+  }
+}
 
 const PAIRS = [
   { slugs: 'chatgpt-vs-gemini',      names: ['ChatGPT', 'Gemini'] },
