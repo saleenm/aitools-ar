@@ -4,6 +4,7 @@ export interface Tool {
   name: string
   name_ar: string
   tagline_ar: string
+  tagline_en?: string | null
   description_ar: string
   category: ToolCategory
   pricing: PricingType
@@ -34,6 +35,11 @@ export type ToolCategory =
   | 'seo'
   | 'design'
   | 'data'
+
+export const CATEGORY_KEYS: ToolCategory[] = [
+  'chatbot', 'image', 'video', 'audio', 'writing',
+  'code', 'productivity', 'seo', 'design', 'data',
+]
 
 export type PricingType = 'free' | 'freemium' | 'paid'
 
