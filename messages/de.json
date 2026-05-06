@@ -89,7 +89,9 @@
     "title": "KI-Tool-Kategorien",
     "subtitle": "Nach Fachgebiet durchsuchen",
     "toolsCount": "Tools",
-    "breadcrumb": "Kategorien"
+    "breadcrumb": "Kategorien",
+    "viewAll": "Alle Tools anzeigen",
+    "bestLabel": "Bestes"
   },
   "comparePage": {
     "title": "KI-Tools vergleichen",

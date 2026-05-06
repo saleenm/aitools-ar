@@ -89,7 +89,9 @@
     "title": "AI Tool Categories",
     "subtitle": "Browse by specialty",
     "toolsCount": "tools",
-    "breadcrumb": "Categories"
+    "breadcrumb": "Categories",
+    "viewAll": "View All Tools",
+    "bestLabel": "Best"
   },
   "comparePage": {
     "title": "Compare AI Tools",

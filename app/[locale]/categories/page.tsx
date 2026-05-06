@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { getTools } from '@/lib/data'
-import { CATEGORY_ICONS, ToolCategory } from '@/lib/types'
+import { CATEGORY_ICONS, CATEGORY_KEYS } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,15 +14,12 @@ export default async function CategoriesPage({ params }: Props) {
   const allTools = await getTools()
   const base = `/${locale}`
 
-  const CATEGORY_KEYS: ToolCategory[] = ['chatbot','image','video','audio','writing','code','productivity','seo','design','data']
-
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
         <h1 className="text-3xl font-extrabold text-white mb-3">
-          {t('title').split(' ').slice(0,-1).join(' ')}{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-l from-violet-400 to-pink-400">
-            {t('title').split(' ').slice(-1)}
+            {t('title')}
           </span>
         </h1>
         <p className="text-gray-400">{t('subtitle')}</p>
@@ -30,8 +27,10 @@ export default async function CategoriesPage({ params }: Props) {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {CATEGORY_KEYS.map((slug) => {
-          const count = allTools.filter((t) => t.category === slug).length
-          const topTool = allTools.filter((t) => t.category === slug).sort((a, b) => b.rating - a.rating)[0]
+          const count = allTools.filter((tool) => tool.category === slug).length
+          const topTool = allTools
+            .filter((tool) => tool.category === slug)
+            .sort((a, b) => b.rating - a.rating)[0]
 
           return (
             <Link key={slug} href={`${base}/?category=${slug}`}
@@ -42,7 +41,9 @@ export default async function CategoriesPage({ params }: Props) {
               </h2>
               <p className="text-xs text-gray-500 mb-2">{count} {t('toolsCount')}</p>
               {topTool && (
-                <p className="text-xs text-gray-600 truncate">★ {topTool.name}</p>
+                <p className="text-xs text-gray-600 truncate">
+                  ★ {t('bestLabel')}: {topTool.name}
+                </p>
               )}
             </Link>
           )
@@ -52,7 +53,7 @@ export default async function CategoriesPage({ params }: Props) {
       <div className="text-center mt-12">
         <Link href={base}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors">
-          {tc('chatbot').split('&')[0].trim()} → {tc('data')}
+          {t('viewAll')} →
         </Link>
       </div>
     </main>

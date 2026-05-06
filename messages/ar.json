@@ -89,7 +89,9 @@
     "title": "فئات أدوات AI",
     "subtitle": "تصفح حسب التخصص",
     "toolsCount": "أداة",
-    "breadcrumb": "الفئات"
+    "breadcrumb": "الفئات",
+    "viewAll": "عرض جميع الأدوات",
+    "bestLabel": "الأفضل"
   },
   "comparePage": {
     "title": "قارن بين أدوات AI",

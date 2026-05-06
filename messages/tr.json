@@ -89,7 +89,9 @@
     "title": "Yapay Zeka Aracı Kategorileri",
     "subtitle": "Uzmanlık alanına göre göz at",
     "toolsCount": "araç",
-    "breadcrumb": "Kategoriler"
+    "breadcrumb": "Kategoriler",
+    "viewAll": "Tüm araçları gör",
+    "bestLabel": "En iyi"
   },
   "comparePage": {
     "title": "Yapay Zeka Araçlarını Karşılaştır",

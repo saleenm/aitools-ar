@@ -89,7 +89,9 @@
     "title": "Categorías de herramientas IA",
     "subtitle": "Explorar por especialidad",
     "toolsCount": "herramientas",
-    "breadcrumb": "Categorías"
+    "breadcrumb": "Categorías",
+    "viewAll": "Ver todas las herramientas",
+    "bestLabel": "Mejor"
   },
   "comparePage": {
     "title": "Comparar herramientas de IA",
