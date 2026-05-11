@@ -7,7 +7,7 @@ import { CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
 import AdUnit from '@/components/AdUnit'
-import { buildAlternates, buildToolJsonLd } from '@/lib/seo'
+import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 
@@ -52,12 +52,28 @@ export default async function ToolPage({ params }: Props) {
   if (!tool) notFound()
 
   const base = `/${locale}`
+  const isArabic = locale === 'ar'
   const related = allTools.filter((t) => t.category === tool.category && t.slug !== tool.slug).slice(0, 4)
+
+  const BASE_URL = 'https://aitools-ar.vercel.app'
   const jsonLd = buildToolJsonLd(tool)
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: t('breadcrumbHome'), url: `${BASE_URL}/${locale}` },
+    { name: tc(tool.category), url: `${BASE_URL}/${locale}?category=${tool.category}` },
+    { name: tool.name, url: `${BASE_URL}/${locale}/tools/${tool.slug}` },
+  ])
+  const tagline = !isArabic && tool.tagline_en ? tool.tagline_en : tool.tagline_ar
+  const faqLd = buildFAQJsonLd([
+    { question: `What is ${tool.name}?`, answer: tagline },
+    { question: `Is ${tool.name} free?`, answer: tool.pricing === 'free' ? `Yes, ${tool.name} is free to use.` : `${tool.name} starts at $${tool.price_monthly}/month.` },
+    { question: `What category is ${tool.name}?`, answer: `${tool.name} is an AI tool in the ${tool.category} category.` },
+  ])
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <main className="max-w-5xl mx-auto px-4 py-10">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
@@ -79,14 +95,14 @@ export default async function ToolPage({ params }: Props) {
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <h1 className="text-2xl font-extrabold text-white">{tool.name}</h1>
-                <span className="text-sm text-gray-500">{tool.name_ar}</span>
+                {isArabic && <span className="text-sm text-gray-500">{tool.name_ar}</span>}
                 {tool.is_featured && (
                   <span className="text-xs px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30">
                     {t('new')} ⭐
                   </span>
                 )}
               </div>
-              <p className="text-gray-400 mb-4">{tool.tagline_ar}</p>
+              <p className="text-gray-400 mb-4">{tagline}</p>
               <div className="flex items-center gap-3 mb-5">
                 <RatingStars rating={tool.rating} size="lg" />
                 <span className="text-white font-bold text-lg">{tool.rating.toFixed(1)}</span>
