@@ -6,6 +6,7 @@ import { getToolsForCompare } from '@/lib/data'
 import { PRICING_COLORS, CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import { buildAlternates } from '@/lib/seo'
+import { getLocalizedPros, getLocalizedCons } from '@/lib/tool-i18n'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,7 +21,7 @@ function parseSlugs(slug: string): [string, string] | null {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params
+  const { slug, locale } = params
   const parsed = parseSlugs(slug)
   if (!parsed) return {}
   const [s1, s2] = parsed
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: buildAlternates(`/compare/${slug}`),
+    alternates: buildAlternates(`/compare/${slug}`, locale),
     openGraph: { title, description, type: 'article' },
     twitter: { card: 'summary_large_image', title, description },
   }
@@ -213,7 +214,7 @@ export default async function ComparePage({ params }: Props) {
             <div>
               <h4 className="text-green-400 text-sm font-semibold mb-2">✅ {t('prosHeader')}</h4>
               <ul className="space-y-1">
-                {tool.pros.map((p, i) => (
+                {getLocalizedPros(tool.slug, tool.pros, locale).map((p, i) => (
                   <li key={i} className="text-xs text-gray-400 flex items-start gap-2">
                     <span className="text-green-400">•</span>{p}
                   </li>
@@ -223,7 +224,7 @@ export default async function ComparePage({ params }: Props) {
             <div>
               <h4 className="text-red-400 text-sm font-semibold mb-2">❌ {t('consHeader')}</h4>
               <ul className="space-y-1">
-                {tool.cons.map((c, i) => (
+                {getLocalizedCons(tool.slug, tool.cons, locale).map((c, i) => (
                   <li key={i} className="text-xs text-gray-400 flex items-start gap-2">
                     <span className="text-red-400">•</span>{c}
                   </li>

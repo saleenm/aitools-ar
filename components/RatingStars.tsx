@@ -11,7 +11,7 @@ export default function RatingStars({ rating, max = 5, size = 'md' }: Props) {
   const empty = max - full - (half ? 1 : 0)
 
   return (
-    <span className={`${sizes[size]} inline-flex gap-0.5`} aria-label={`تقييم ${rating} من ${max}`}>
+    <span className={`${sizes[size]} inline-flex gap-0.5`} aria-label={`${rating}/${max}`}>
       {'★'.repeat(full).split('').map((s, i) => (
         <span key={`f-${i}`} className="text-yellow-400">{s}</span>
       ))}

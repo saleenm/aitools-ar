@@ -11,6 +11,7 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   metadataBase: new URL('https://aitools-ar.vercel.app'),
   robots: { index: true, follow: true },
+  verification: { google: 'sDzwcgIdvyo9Ro2QYcV3kh9TPr3Uh3zGiVftTAxKQmY' },
   keywords: ['AI tools', 'artificial intelligence', 'ChatGPT', 'Gemini', 'Midjourney', 'أدوات ذكاء اصطناعي', 'compare AI'],
   authors: [{ name: 'AI Tools' }],
   creator: 'AI Tools',

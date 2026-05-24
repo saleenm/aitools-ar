@@ -84,7 +84,8 @@
     "fair": "Akzeptabel",
     "good": "Gut",
     "great": "Sehr gut",
-    "excellent": "Ausgezeichnet"
+    "excellent": "Ausgezeichnet",
+    "defaultUser": "Benutzer"
   },
   "categoriesPage": {
     "title": "KI-Tool-Kategorien",

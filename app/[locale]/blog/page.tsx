@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: m.title,
     description: m.description,
-    alternates: buildAlternates('/blog'),
+    alternates: buildAlternates('/blog', params.locale),
     openGraph: { title: m.title, description: m.description, type: 'website' },
   }
 }

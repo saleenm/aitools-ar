@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return {
     title: m.title,
     description: m.description,
-    alternates: buildAlternates(''),
+    alternates: buildAlternates('', params.locale),
     openGraph: {
       title: m.title,
       description: m.description,

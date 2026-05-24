@@ -10,14 +10,14 @@ const HREFLANG_MAP: Record<string, string> = {
   de: 'de',
 }
 
-export function buildAlternates(path: string) {
+export function buildAlternates(path: string, locale: string = 'ar') {
   const languages: Record<string, string> = {}
-  for (const locale of LOCALES) {
-    languages[HREFLANG_MAP[locale]] = `${BASE_URL}/${locale}${path}`
+  for (const loc of LOCALES) {
+    languages[HREFLANG_MAP[loc]] = `${BASE_URL}/${loc}${path}`
   }
-  languages['x-default'] = `${BASE_URL}/ar${path}`
+  languages['x-default'] = `${BASE_URL}/en${path}`
   return {
-    canonical: `${BASE_URL}${path}`,
+    canonical: `${BASE_URL}/${locale}${path}`,
     languages,
   }
 }

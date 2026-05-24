@@ -8,6 +8,7 @@ import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
 import AdUnit from '@/components/AdUnit'
 import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
+import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedDescription } from '@/lib/tool-i18n'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: buildAlternates(`/tools/${slug}`),
+    alternates: buildAlternates(`/tools/${slug}`, locale),
     openGraph: {
       title,
       description,
@@ -127,7 +128,7 @@ export default async function ToolPage({ params }: Props) {
             {/* Description */}
             <section className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
               <h2 className="text-lg font-bold text-white mb-3">{t('about')} {tool.name}</h2>
-              <p className="text-gray-400 leading-relaxed">{tool.description_ar}</p>
+              <p className="text-gray-400 leading-relaxed">{getLocalizedDescription(tool.slug, tool.description_ar, locale)}</p>
             </section>
 
             {/* Pros & Cons */}
@@ -137,7 +138,7 @@ export default async function ToolPage({ params }: Props) {
                 <div>
                   <h3 className="text-green-400 font-semibold mb-3">{t('pros')}</h3>
                   <ul className="space-y-2">
-                    {tool.pros.map((pro, i) => (
+                    {getLocalizedPros(tool.slug, tool.pros, locale).map((pro, i) => (
                       <li key={i} className="text-sm text-gray-400 flex items-start gap-2">
                         <span className="text-green-400 mt-0.5">•</span>{pro}
                       </li>
@@ -147,7 +148,7 @@ export default async function ToolPage({ params }: Props) {
                 <div>
                   <h3 className="text-red-400 font-semibold mb-3">{t('cons')}</h3>
                   <ul className="space-y-2">
-                    {tool.cons.map((con, i) => (
+                    {getLocalizedCons(tool.slug, tool.cons, locale).map((con, i) => (
                       <li key={i} className="text-sm text-gray-400 flex items-start gap-2">
                         <span className="text-red-400 mt-0.5">•</span>{con}
                       </li>
@@ -161,7 +162,7 @@ export default async function ToolPage({ params }: Props) {
             <section className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
               <h2 className="text-lg font-bold text-white mb-4">{t('features')}</h2>
               <div className="grid sm:grid-cols-2 gap-2">
-                {tool.features.map((f, i) => (
+                {getLocalizedFeatures(tool.slug, tool.features, locale).map((f, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-gray-400 bg-gray-800 rounded-lg px-3 py-2">
                     <span className="text-violet-400">✦</span>{f}
                   </div>

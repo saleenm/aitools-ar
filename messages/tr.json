@@ -84,7 +84,8 @@
     "fair": "Orta",
     "good": "İyi",
     "great": "Çok İyi",
-    "excellent": "Mükemmel"
+    "excellent": "Mükemmel",
+    "defaultUser": "Kullanıcı"
   },
   "categoriesPage": {
     "title": "Yapay Zeka Aracı Kategorileri",

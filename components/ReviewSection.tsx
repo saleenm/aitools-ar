@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase-browser'
 import { useAuth } from '@/hooks/useAuth'
+import { useTranslations, useLocale } from 'next-intl'
 
 interface Review {
   id: string
@@ -22,6 +23,8 @@ interface Props {
 export default function ReviewSection({ toolSlug, toolName }: Props) {
   const supabase = createClient()
   const { user, loading: authLoading, signInWithGoogle, signOut } = useAuth()
+  const t = useTranslations('reviews')
+  const locale = useLocale()
 
   const [reviews, setReviews] = useState<Review[]>([])
   const [loading, setLoading] = useState(true)
@@ -31,6 +34,8 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [votedIds, setVotedIds] = useState<Set<string>>(new Set())
+
+  const ratingLabels = ['', t('poor'), t('fair'), t('good'), t('great'), t('excellent')]
 
   const fetchReviews = useCallback(async () => {
     const { data } = await supabase
@@ -54,7 +59,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
     const { error } = await supabase.from('reviews').insert({
       tool_slug: toolSlug,
       user_id: user.id,
-      user_name: user.user_metadata?.full_name ?? user.email?.split('@')[0] ?? 'مستخدم',
+      user_name: user.user_metadata?.full_name ?? user.email?.split('@')[0] ?? t('defaultUser'),
       rating,
       body: body.trim(),
     })
@@ -81,11 +86,20 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
     ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1)
     : null
 
+  const googleSvgWhite = (
+    <svg width="16" height="16" viewBox="0 0 24 24">
+      <path fill="white" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="white" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="white" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+      <path fill="white" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
+  )
+
   return (
     <section className="mt-8 bg-gray-900 border border-gray-800 rounded-2xl p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-bold text-white">
-          تقييمات المستخدمين
+          {t('title')}
           {reviews.length > 0 && (
             <span className="mr-2 text-sm font-normal text-gray-500">({reviews.length})</span>
           )}
@@ -97,7 +111,6 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
               <span className="text-white font-bold">{avg}</span>
             </div>
           )}
-          {/* Auth button */}
           {!authLoading && (
             user ? (
               <div className="flex items-center gap-2">
@@ -105,7 +118,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
                   {user.user_metadata?.full_name ?? user.email?.split('@')[0]}
                 </span>
                 <button onClick={signOut} className="text-xs text-gray-600 hover:text-red-400 transition-colors">
-                  خروج
+                  {t('signOut')}
                 </button>
               </div>
             ) : (
@@ -114,7 +127,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
                 className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                دخول بـ Google
+                {t('loginButton')}
               </button>
             )
           )}
@@ -125,18 +138,18 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
       <div className="mb-8 pb-8 border-b border-gray-800">
         {!user ? (
           <div className="text-center py-6 bg-gray-800/40 rounded-xl border border-gray-700">
-            <p className="text-gray-400 text-sm mb-3">سجّل دخولك لكتابة تقييم لـ {toolName}</p>
+            <p className="text-gray-400 text-sm mb-3">{t('loginPrompt')} {toolName}</p>
             <button
               onClick={signInWithGoogle}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24"><path fill="white" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="white" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="white" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="white" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              دخول بـ Google
+              {googleSvgWhite}
+              {t('loginButton')}
             </button>
           </div>
         ) : (
           <form onSubmit={submit}>
-            <p className="text-sm text-gray-400 mb-3">أضف تقييمك لـ {toolName}</p>
+            <p className="text-sm text-gray-400 mb-3">{t('writeReview')} {toolName}</p>
 
             {/* Stars */}
             <div className="flex gap-1 mb-4">
@@ -154,7 +167,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
               ))}
               {rating > 0 && (
                 <span className="text-xs text-gray-500 self-center mr-2">
-                  {['', 'سيء', 'مقبول', 'جيد', 'ممتاز', 'رائع'][rating]}
+                  {ratingLabels[rating]}
                 </span>
               )}
             </div>
@@ -162,7 +175,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              placeholder="شارك تجربتك مع الأداة..."
+              placeholder={t('placeholder')}
               maxLength={400}
               rows={3}
               className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-violet-500 text-sm transition-colors resize-none mb-3"
@@ -173,7 +186,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
               disabled={!rating || !body.trim() || submitting}
               className="px-6 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold transition-colors"
             >
-              {submitting ? '...' : submitted ? '✓ شكراً!' : 'نشر التقييم'}
+              {submitting ? t('submitting') : submitted ? t('submitted') : t('submitButton')}
             </button>
           </form>
         )}
@@ -187,7 +200,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
           ))}
         </div>
       ) : reviews.length === 0 ? (
-        <p className="text-center text-gray-600 py-6">لا توجد تقييمات بعد — كن أول من يقيّم!</p>
+        <p className="text-center text-gray-600 py-6">{t('noReviews')}</p>
       ) : (
         <div className="space-y-4">
           {reviews.map((rv) => (
@@ -200,7 +213,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
                   <span className="font-semibold text-white text-sm">{rv.user_name}</span>
                 </div>
                 <span className="text-gray-600 text-xs">
-                  {new Date(rv.created_at).toLocaleDateString('ar-SA')}
+                  {new Date(rv.created_at).toLocaleDateString(locale)}
                 </span>
               </div>
 
@@ -217,7 +230,7 @@ export default function ReviewSection({ toolSlug, toolName }: Props) {
                 disabled={!user || votedIds.has(rv.id)}
                 className="text-xs text-gray-600 hover:text-gray-400 disabled:cursor-default transition-colors flex items-center gap-1"
               >
-                👍 مفيد {rv.helpful_count > 0 && <span className="text-gray-500">({rv.helpful_count})</span>}
+                {t('helpful')} {rv.helpful_count > 0 && <span className="text-gray-500">({rv.helpful_count})</span>}
               </button>
             </div>
           ))}

@@ -84,7 +84,8 @@
     "fair": "مقبول",
     "good": "جيد",
     "great": "ممتاز",
-    "excellent": "رائع"
+    "excellent": "رائع",
+    "defaultUser": "مستخدم"
   },
   "categoriesPage": {
     "title": "فئات أدوات AI",

@@ -84,7 +84,8 @@
     "fair": "Regular",
     "good": "Bueno",
     "great": "Muy bueno",
-    "excellent": "Excelente"
+    "excellent": "Excelente",
+    "defaultUser": "Usuario"
   },
   "categoriesPage": {
     "title": "Categorías de herramientas IA",

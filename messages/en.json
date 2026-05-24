@@ -84,7 +84,8 @@
     "fair": "Fair",
     "good": "Good",
     "great": "Great",
-    "excellent": "Excellent"
+    "excellent": "Excellent",
+    "defaultUser": "User"
   },
   "categoriesPage": {
     "title": "AI Tool Categories",
