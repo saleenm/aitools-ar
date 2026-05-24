@@ -74,6 +74,43 @@ const DESCRIPTIONS: Record<string, { en: string; fr?: string; es?: string; tr?: 
     tr: 'Notion AI, güçlü yapay zeka özelliklerini doğrudan Notion\'a ekler. Belge yazma, özetleme, çeviri ve yeni fikirler üretme konusunda yardımcı olur.',
     de: 'Notion AI fügt leistungsstarke KI-Fähigkeiten direkt in Notion ein. Es hilft beim Schreiben von Dokumenten, Zusammenfassen, Übersetzen und Generieren neuer Ideen.',
   },
+  grok: { en: 'Grok is xAI\'s AI model by Elon Musk with real-time access to X (Twitter) posts. It features a direct, witty conversation style and can answer questions other AI models may decline.' },
+  'meta-ai': { en: 'Meta AI is the AI assistant by Meta, built directly into WhatsApp, Instagram, Facebook, and Messenger. It\'s completely free and powered by Llama 3, capable of generating images and answering questions.' },
+  'microsoft-copilot': { en: 'Microsoft Copilot is the AI assistant integrated into Windows 11, Microsoft 365, and Edge browser. It uses GPT-4 and DALL·E 3 to assist with documents, emails, spreadsheets, and image generation.' },
+  llama: { en: 'Llama is Meta\'s open-source large language model that can be installed locally on your computer. It\'s free for researchers and developers, offering full privacy with no internet connection required.' },
+  mistral: { en: 'Mistral AI is a French company building highly efficient open-source AI models. Mistral and Mixtral models offer excellent performance-to-cost ratio and are available via API or self-hosted.' },
+  cohere: { en: 'Cohere provides enterprise-grade AI models focused on search, retrieval, and generation. Command R+ is their flagship model excelling at RAG (retrieval-augmented generation) for business applications.' },
+  'adobe-firefly': { en: 'Adobe Firefly is Adobe\'s generative AI tool built into Creative Cloud apps like Photoshop and Illustrator. It generates commercially safe images trained on licensed content.' },
+  'canva-ai': { en: 'Canva AI brings artificial intelligence into the world\'s most popular design tool. Features like Magic Design, text-to-image, and AI presentations make professional design accessible to everyone.' },
+  ideogram: { en: 'Ideogram is an AI image generator that excels at rendering accurate text within images — a major challenge for other tools. It produces high-quality typographic designs and illustrations.' },
+  'leonardo-ai': { en: 'Leonardo AI is a creative AI platform for generating high-quality images, motion assets, and 3D textures. Its fine-tuned models and canvas editor make it a favorite among game developers and artists.' },
+  'flux-ai': { en: 'Flux AI by Black Forest Labs delivers state-of-the-art image generation with exceptional detail and photorealism. Available in Pro, Dev, and Schnell variants with open weights.' },
+  sora: { en: 'Sora by OpenAI is a groundbreaking text-to-video model capable of generating realistic, high-definition videos up to 60 seconds. It understands physics and maintains scene consistency throughout.' },
+  'kling-ai': { en: 'Kling AI by Kuaishou Technology generates high-quality video from text or images with excellent face consistency. It\'s become one of the top text-to-video tools with free credits available.' },
+  'pika-labs': { en: 'Pika Labs is an easy-to-use AI video generator that animates images and generates short video clips from text prompts. It features motion controls and a lip sync feature for character animation.' },
+  'hailuo-ai': { en: 'Hailuo AI (MiniMax) generates realistic video clips with natural human motion. It excels at portrait and scene generation with a free trial tier available for new users.' },
+  'suno-ai': { en: 'Suno AI generates complete songs — music and lyrics together — from a simple text description. It supports dozens of genres from pop to classical and lets you extend or edit generated tracks.' },
+  udio: { en: 'Udio generates high-quality music from text descriptions with fine-grained style control. It\'s known for producing studio-quality audio across diverse genres and allows remixing of generated tracks.' },
+  'murf-ai': { en: 'Murf AI is a professional text-to-speech platform with 120+ natural-sounding AI voices in 20+ languages. It\'s widely used for videos, podcasts, and e-learning content creation.' },
+  'copy-ai': { en: 'Copy.ai is an AI writing tool specialized in marketing copy and sales content. With 90+ templates for ads, emails, product descriptions, and social posts, it dramatically speeds up copywriting workflows.' },
+  writesonic: { en: 'Writesonic is an AI content platform combining writing, SEO optimization, and a ChatGPT-like chatbot called Chatsonic with real-time web search. Ideal for bloggers and digital marketers.' },
+  sudowrite: { en: 'Sudowrite is an AI writing tool specifically designed for fiction writers. It helps with story generation, character development, scene description, and overcoming writer\'s block.' },
+  cursor: { en: 'Cursor is a code editor built on VS Code with deeply integrated AI. It understands your entire codebase, writes new code with Composer, chats about your code, and offers intelligent tab completion.' },
+  replit: { en: 'Replit is an online IDE with built-in AI assistance for code generation and debugging. It requires zero setup and runs in the browser, making it perfect for learning, prototyping, and quick deployment.' },
+  tabnine: { en: 'Tabnine is an AI code completion tool that works across all major IDEs. It features a privacy mode where code never leaves your machine — ideal for enterprise and security-conscious developers.' },
+  'bolt-new': { en: 'Bolt.new is an AI-powered full-stack web development platform that generates complete applications from a single prompt. It supports npm packages, instant deployment, and a live preview in the browser.' },
+  'otter-ai': { en: 'Otter.ai is an AI meeting assistant that transcribes conversations in real time, generates summaries, and identifies speakers. It integrates with Zoom, Google Meet, and Microsoft Teams.' },
+  'mem-ai': { en: 'Mem is an AI-powered note-taking app that automatically organizes your notes with intelligent tagging and smart search. It connects your ideas and surfaces relevant information when you need it.' },
+  taskade: { en: 'Taskade is an all-in-one AI productivity platform combining task management, mind maps, notes, and video calls. Its AI agents can automate workflows and manage projects autonomously.' },
+  'semrush-ai': { en: 'SEMrush with AI capabilities is the industry\'s most comprehensive SEO and digital marketing platform. Its AI writing assistant and content optimization tools help create high-ranking content at scale.' },
+  'surfer-seo': { en: 'Surfer SEO uses AI to optimize content for search engines in real time. Its content editor scores your writing and provides NLP-based keyword suggestions to improve Google rankings.' },
+  ahrefs: { en: 'Ahrefs is a powerful SEO toolset with the web\'s best backlink database. It provides in-depth keyword research, competitor analysis, site audits, and rank tracking for SEO professionals.' },
+  'figma-ai': { en: 'Figma AI brings artificial intelligence directly into the Figma design tool with features like AI design generation, smart rename, and auto layout. It helps designers work faster and smarter.' },
+  looka: { en: 'Looka is an AI-powered logo maker and brand identity platform. It generates professional logos from your preferences and includes a complete brand kit with colors, fonts, and business card designs.' },
+  khroma: { en: 'Khroma is an AI color tool that learns your color preferences and generates personalized palettes, gradients, and typography combinations. It\'s free and widely used by UI/UX designers.' },
+  'julius-ai': { en: 'Julius AI is a conversational data analysis tool that lets you upload CSV or Excel files and ask questions in plain English. It generates charts, runs Python, and executes SQL queries automatically.' },
+  'obviously-ai': { en: 'Obviously AI is a no-code machine learning platform that builds predictive models from your data in minutes. Non-technical users can predict churn, sales, and other outcomes without writing code.' },
+  'tableau-ai': { en: 'Tableau with Einstein AI is the leading data visualization platform powered by Salesforce AI. It enables natural language queries, automated insights, and interactive dashboards for business intelligence.' },
   'runway-ml': {
     en: 'Runway is the leading platform for AI-powered video generation and editing. It enables text-to-video generation, background removal, image animation, and professional-grade editing tools all in one platform.',
     fr: 'Runway est la plateforme leader dans la génération et l\'édition de vidéos par IA. Elle permet la génération vidéo à partir de texte, la suppression d\'arrière-plan et l\'animation d\'images.',
@@ -307,6 +344,197 @@ export const TOOL_I18N: Record<string, ToolI18n> = {
       en: ['Human voice generation', 'Voice cloning', '30+ languages', 'Available API', 'Excellent Arabic voice'],
     },
   },
+  // ── Supabase expanded tools ─────────────────────────────────
+  'jasper-ai': {
+    pros: { en: ['Great for marketing copy', 'Tons of templates', 'Team collaboration'] },
+    cons: { en: ['Expensive subscription', 'No free plan'] },
+    features: { en: ['AI copywriting', '50+ templates', 'SEO mode', 'Brand voice', 'Plagiarism checker'] },
+  },
+  grok: {
+    pros: { en: ['Real-time X/Twitter data', 'Partially free', 'Bold and direct answers'] },
+    cons: { en: ['Full version requires X Premium', 'Limited outside X platform'] },
+    features: { en: ['Real-time X posts access', 'Casual conversation style', 'Image analysis', 'Code generation', 'Real-time search'] },
+  },
+  'meta-ai': {
+    pros: { en: ['Completely free', 'No separate app needed', 'Works inside WhatsApp'] },
+    cons: { en: ['Privacy concerns with Meta', 'Less accurate than GPT-4'] },
+    features: { en: ['WhatsApp & Instagram integration', 'Free image generation', 'Built on Llama 3', 'Multilingual', 'Web search'] },
+  },
+  'microsoft-copilot': {
+    pros: { en: ['Integrated with Microsoft 365', 'Free in browser', 'Arabic interface support'] },
+    cons: { en: ['Full version is paid', 'Requires Microsoft account'] },
+    features: { en: ['Office 365 integration', 'Meeting summarization', 'Word document creation', 'Excel data analysis', 'DALL-E image generation'] },
+  },
+  llama: {
+    pros: { en: ['Completely free', 'Full privacy', 'Works offline'] },
+    cons: { en: ['Requires technical skills', 'Needs powerful hardware'] },
+    features: { en: ['Open source', 'Runs locally', 'No fees', 'Customizable', 'Multiple model sizes'] },
+  },
+  mistral: {
+    pros: { en: ['High efficiency at low cost', 'Open source', 'European-made'] },
+    cons: { en: ['Less known than GPT', 'Smaller user community'] },
+    features: { en: ['Open-source models', 'High efficiency', 'Available API', 'Mixtral model', 'Free Le Chat server'] },
+  },
+  cohere: {
+    pros: { en: ['Enterprise-grade reliability', 'Strong multilingual support', 'Excellent for RAG'] },
+    cons: { en: ['Less known to consumers', 'Pricing can be complex'] },
+    features: { en: ['Command R+ model', 'Embed API', 'Rerank API', 'RAG support', 'Enterprise deployment'] },
+  },
+  'adobe-firefly': {
+    pros: { en: ['Commercially safe images', 'Deep Adobe integration', 'High quality results'] },
+    cons: { en: ['Requires Creative Cloud subscription', 'Limited free credits'] },
+    features: { en: ['Text-to-image', 'Generative fill', 'Adobe CC integration', 'Commercial licensing', 'Style transfer'] },
+  },
+  'canva-ai': {
+    pros: { en: ['Easy for non-designers', 'All-in-one design tool', 'Generous free tier'] },
+    cons: { en: ['Less control than Photoshop', 'AI features require Pro'] },
+    features: { en: ['Magic Design', 'Text to image', 'Background remover', 'AI presentations', 'Brand kit'] },
+  },
+  ideogram: {
+    pros: { en: ['Excellent text rendering in images', 'Free tier available', 'High quality output'] },
+    cons: { en: ['Limited styles vs Midjourney', 'Smaller community'] },
+    features: { en: ['Text in images', 'Typography generation', 'Multiple styles', 'Remix feature', 'Free generation'] },
+  },
+  'leonardo-ai': {
+    pros: { en: ['Very high image quality', 'Generous free plan', 'Fine-tuning support'] },
+    cons: { en: ['Complex interface for beginners', 'Credits can run out fast'] },
+    features: { en: ['AI image generation', 'Fine-tuned models', 'Image-to-image', 'Canvas editor', 'Motion generation'] },
+  },
+  'flux-ai': {
+    pros: { en: ['Extremely detailed images', 'Open weights available', 'Fast generation'] },
+    cons: { en: ['Requires credits for high quality', 'Some models are very large'] },
+    features: { en: ['Flux Pro / Dev / Schnell', 'Photorealistic output', 'Open source weights', 'API access', 'ControlNet support'] },
+  },
+  sora: {
+    pros: { en: ['Stunning video quality', 'Long video generation', 'Realistic physics'] },
+    cons: { en: ['Limited access', 'Expensive', 'No API yet'] },
+    features: { en: ['Text-to-video', 'Up to 60 seconds', 'Cinematic quality', 'Scene consistency', 'Storyboard mode'] },
+  },
+  'kling-ai': {
+    pros: { en: ['High quality video', 'Face consistency', 'Free credits available'] },
+    cons: { en: ['Slower generation', 'Limited duration in free plan'] },
+    features: { en: ['Text-to-video', 'Image-to-video', 'Face tracking', '5-second clips', 'Cinematic mode'] },
+  },
+  'pika-labs': {
+    pros: { en: ['Easy to use', 'Good motion quality', 'Discord community'] },
+    cons: { en: ['Short video clips', 'Limited customization'] },
+    features: { en: ['Text-to-video', 'Image animation', 'Motion control', 'Lip sync', 'Style transfer'] },
+  },
+  'hailuo-ai': {
+    pros: { en: ['Very realistic motion', 'Good at human videos', 'Free to try'] },
+    cons: { en: ['Requires phone verification', 'Limited daily credits'] },
+    features: { en: ['Video generation', 'Realistic motion', 'Portrait generation', 'Scene creation', 'Audio sync'] },
+  },
+  'suno-ai': {
+    pros: { en: ['Full song generation', 'Lyrics + music together', 'Many genres'] },
+    cons: { en: ['Limited daily credits', 'No instrument isolation'] },
+    features: { en: ['Full song creation', 'Lyrics generation', 'Multiple genres', 'Extend song', 'Custom style'] },
+  },
+  udio: {
+    pros: { en: ['High audio quality', 'Detailed style control', 'Good for remixing'] },
+    cons: { en: ['Credits run out quickly', 'Inconsistent results'] },
+    features: { en: ['Music generation', 'Style control', 'Remix feature', 'Extended tracks', 'Instrumental mode'] },
+  },
+  'murf-ai': {
+    pros: { en: ['Professional voice quality', '120+ voices', 'Video sync feature'] },
+    cons: { en: ['Expensive for heavy use', 'Free plan very limited'] },
+    features: { en: ['120+ AI voices', '20+ languages', 'Voice cloning', 'Video voiceover', 'Pitch & speed control'] },
+  },
+  'copy-ai': {
+    pros: { en: ['Fast copy generation', '90+ templates', 'Good free plan'] },
+    cons: { en: ['Output needs editing', 'Repetitive for long content'] },
+    features: { en: ['Blog posts', 'Ad copy', 'Email sequences', '90+ templates', 'Brand voice'] },
+  },
+  writesonic: {
+    pros: { en: ['SEO-focused content', 'Chatsonic with web search', 'Affordable pricing'] },
+    cons: { en: ['Quality varies by template', 'Word limit on free plan'] },
+    features: { en: ['AI article writer', 'Chatsonic chatbot', 'SEO optimizer', 'Paraphraser', 'Product descriptions'] },
+  },
+  sudowrite: {
+    pros: { en: ['Built for fiction writers', 'Creative and imaginative', 'Great for writer\'s block'] },
+    cons: { en: ['Niche tool', 'Expensive for casual users'] },
+    features: { en: ['Story generation', 'Describe tool', 'Brainstorm', 'Rewrite', 'Pacing analysis'] },
+  },
+  cursor: {
+    pros: { en: ['Best for developers', 'Understands full codebase', 'Generous free tier'] },
+    cons: { en: ['Relies on paid AI models', 'Can be slow on large files'] },
+    features: { en: ['Codebase understanding', 'Composer for new code', 'Chat with code', 'Tab autocomplete', 'All language support'] },
+  },
+  replit: {
+    pros: { en: ['No setup required', 'Full online IDE', 'AI assistance built-in'] },
+    cons: { en: ['Slow for large projects', 'Limited free compute'] },
+    features: { en: ['Online IDE', 'AI code generation', 'Live collaboration', 'Deploy instantly', '50+ languages'] },
+  },
+  tabnine: {
+    pros: { en: ['Works offline', 'Strong privacy', 'Integrates with all IDEs'] },
+    cons: { en: ['Less powerful than Copilot', 'Needs training time'] },
+    features: { en: ['Code completion', 'Privacy mode', 'All major IDEs', 'Team training', 'Whole-line completions'] },
+  },
+  'bolt-new': {
+    pros: { en: ['Full app from one prompt', 'Deploys instantly', 'No coding needed'] },
+    cons: { en: ['Limited for complex apps', 'Token credits run out'] },
+    features: { en: ['Full-stack generation', 'Instant deployment', 'npm support', 'File system', 'Live preview'] },
+  },
+  'otter-ai': {
+    pros: { en: ['Accurate transcription', 'Meeting summaries', 'Integrates with Zoom'] },
+    cons: { en: ['Limited free minutes', 'Struggles with accents'] },
+    features: { en: ['Real-time transcription', 'Meeting summary', 'Speaker identification', 'Zoom/Teams integration', 'Search transcripts'] },
+  },
+  'mem-ai': {
+    pros: { en: ['Auto-organizes notes', 'Smart search', 'AI summarization'] },
+    cons: { en: ['Expensive Pro plan', 'Mobile app limited'] },
+    features: { en: ['Smart notes', 'AI search', 'Auto-tagging', 'Meeting notes', 'Collaboration'] },
+  },
+  taskade: {
+    pros: { en: ['All-in-one workspace', 'AI agents built-in', 'Great for teams'] },
+    cons: { en: ['Can be overwhelming', 'Pricing tiers complex'] },
+    features: { en: ['AI task generation', 'Mind maps', 'Video calls', 'Workflow automation', 'Team collaboration'] },
+  },
+  'semrush-ai': {
+    pros: { en: ['Industry-leading SEO data', 'AI content optimization', 'Competitor analysis'] },
+    cons: { en: ['Very expensive', 'Steep learning curve'] },
+    features: { en: ['Keyword research', 'AI writing assistant', 'Site audit', 'Backlink analysis', 'Position tracking'] },
+  },
+  'surfer-seo': {
+    pros: { en: ['Real-time content scoring', 'NLP-powered suggestions', 'Easy to use'] },
+    cons: { en: ['Pricey for small teams', 'Limited to written content'] },
+    features: { en: ['Content editor', 'SERP analyzer', 'Keyword surfer', 'Audit tool', 'AI outline generator'] },
+  },
+  ahrefs: {
+    pros: { en: ['Best backlink database', 'Comprehensive SEO toolset', 'Accurate traffic estimates'] },
+    cons: { en: ['One of the most expensive tools', 'No free plan'] },
+    features: { en: ['Site explorer', 'Keywords explorer', 'Content explorer', 'Rank tracker', 'Site audit'] },
+  },
+  'figma-ai': {
+    pros: { en: ['Seamlessly integrated in Figma', 'Speeds up design workflow', 'Auto layout improvements'] },
+    cons: { en: ['Requires Figma subscription', 'Still in beta for some features'] },
+    features: { en: ['AI design generation', 'Auto layout', 'Smart rename', 'Dev mode', 'Prototype generation'] },
+  },
+  looka: {
+    pros: { en: ['Easy logo creation', 'Affordable', 'Full brand kit'] },
+    cons: { en: ['Less creative than human designers', 'Generic results sometimes'] },
+    features: { en: ['AI logo maker', 'Brand kit', 'Business card design', 'Social media assets', 'SVG export'] },
+  },
+  khroma: {
+    pros: { en: ['AI-powered color discovery', 'Personalized palettes', 'Free to use'] },
+    cons: { en: ['Limited export options', 'Basic interface'] },
+    features: { en: ['AI color palettes', 'Personalized suggestions', 'Color search', 'Gradient generator', 'Type pairing'] },
+  },
+  'julius-ai': {
+    pros: { en: ['Conversational data analysis', 'No code needed', 'Multiple file formats'] },
+    cons: { en: ['Limited for complex stats', 'Credits-based model'] },
+    features: { en: ['CSV/Excel analysis', 'Chart generation', 'SQL queries', 'Python execution', 'Natural language queries'] },
+  },
+  'obviously-ai': {
+    pros: { en: ['No-code ML', 'Fast predictions', 'Easy to understand results'] },
+    cons: { en: ['Limited for expert data scientists', 'Pricing not transparent'] },
+    features: { en: ['Predictive analytics', 'No-code ML', 'Data visualization', 'API integration', 'Churn prediction'] },
+  },
+  'tableau-ai': {
+    pros: { en: ['Best-in-class visualizations', 'Einstein AI integration', 'Huge community'] },
+    cons: { en: ['Very expensive', 'Complex for beginners'] },
+    features: { en: ['AI-powered insights', 'Data blending', 'Interactive dashboards', 'Natural language queries', 'Salesforce integration'] },
+  },
 }
 
 type Locale = 'ar' | 'en' | 'fr' | 'es' | 'tr' | 'de'
@@ -317,39 +545,30 @@ type Locale = 'ar' | 'en' | 'fr' | 'es' | 'tr' | 'de'
 export function getLocalizedPros(slug: string, arabicPros: string[], locale: string): string[] {
   if (locale === 'ar') return arabicPros
   const override = TOOL_I18N[slug]?.pros
-  if (!override) return arabicPros
+  if (!override) return []   // don't show Arabic on non-Arabic pages
   const lang = locale as Exclude<Locale, 'ar'>
-  return override[lang] || override.en || arabicPros
+  return override[lang] || override.en || []
 }
 
-/**
- * Returns translated cons for a tool slug, or original Arabic if no translation found
- */
 export function getLocalizedCons(slug: string, arabicCons: string[], locale: string): string[] {
   if (locale === 'ar') return arabicCons
   const override = TOOL_I18N[slug]?.cons
-  if (!override) return arabicCons
+  if (!override) return []
   const lang = locale as Exclude<Locale, 'ar'>
-  return override[lang] || override.en || arabicCons
+  return override[lang] || override.en || []
 }
 
-/**
- * Returns translated features for a tool slug, or original Arabic if no translation found
- */
 export function getLocalizedFeatures(slug: string, arabicFeatures: string[], locale: string): string[] {
   if (locale === 'ar') return arabicFeatures
   const override = TOOL_I18N[slug]?.features
-  if (!override) return arabicFeatures
-  return override.en || arabicFeatures
+  if (!override) return []
+  return override.en || []
 }
 
-/**
- * Returns translated description for a tool slug, or original Arabic if no translation found
- */
 export function getLocalizedDescription(slug: string, arabicDescription: string, locale: string): string {
   if (locale === 'ar') return arabicDescription
   const desc = DESCRIPTIONS[slug]
-  if (!desc) return arabicDescription
+  if (!desc) return ''   // empty is better than Arabic on English pages
   const lang = locale as 'en' | 'fr' | 'es' | 'tr' | 'de'
-  return desc[lang] || desc.en || arabicDescription
+  return desc[lang] || desc.en || ''
 }
