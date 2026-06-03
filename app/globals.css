@@ -3,34 +3,87 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-gray-950 text-gray-100;
-  }
-  /* Arabic line height */
-  p, li, span {
-    line-height: 1.8;
-  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-gray-950 text-gray-100; }
+  p, li, span { line-height: 1.8; }
 }
 
 @layer utilities {
   .font-cairo {
     font-family: var(--font-cairo), 'Cairo', Arial, sans-serif;
   }
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+
+  /* ── Design System ── */
+
+  /* Glass card with blur */
+  .glass-card {
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
+
+  /* Tool card glow on hover */
+  .tool-glow {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  }
+  .tool-glow:hover {
+    box-shadow: 0 0 28px rgba(139, 92, 246, 0.12), 0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Shine sweep on hover */
+  .shine-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    transform: skewX(-15deg);
+    transition: left 0.6s ease;
+    pointer-events: none;
+  }
+  .shine-card:hover::after { left: 140%; }
+
+  /* Violet glow effect */
+  .violet-glow:hover {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.25), 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Badge animate */
+  .badge-pulse {
+    animation: badge-glow 2s ease-in-out infinite alternate;
+  }
+
   /* RTL-friendly gradient */
   .gradient-ar {
     background: linear-gradient(to left, #7c3aed, #ec4899);
   }
-  /* Smooth card hover */
+
+  /* Smooth card hover legacy */
   .card-hover {
     @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-500/5;
   }
+}
+
+@keyframes badge-glow {
+  from { box-shadow: 0 0 4px rgba(139,92,246,0.4); }
+  to { box-shadow: 0 0 12px rgba(139,92,246,0.8); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }

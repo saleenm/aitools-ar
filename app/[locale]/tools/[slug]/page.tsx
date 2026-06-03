@@ -9,6 +9,7 @@ import ReviewSection from '@/components/ReviewSection'
 import AdUnit from '@/components/AdUnit'
 import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
 import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedDescription } from '@/lib/tool-i18n'
+import { getAffiliateLink, AFFILIATE_CTA_LABELS } from '@/lib/affiliate'
 
 export const dynamic = 'force-dynamic'
 
@@ -64,6 +65,8 @@ export default async function ToolPage({ params }: Props) {
     { name: tool.name, url: `${BASE_URL}/${locale}/tools/${tool.slug}` },
   ])
   const tagline = !isArabic && tool.tagline_en ? tool.tagline_en : tool.tagline_ar
+  const affiliate = getAffiliateLink(tool.slug)
+  const affiliateCta = AFFILIATE_CTA_LABELS[locale] || AFFILIATE_CTA_LABELS.en
   const faqLd = buildFAQJsonLd([
     { question: `What is ${tool.name}?`, answer: tagline },
     { question: `Is ${tool.name} free?`, answer: tool.pricing === 'free' ? `Yes, ${tool.name} is free to use.` : `${tool.name} starts at $${tool.price_monthly}/month.` },
@@ -110,14 +113,32 @@ export default async function ToolPage({ params }: Props) {
                 <span className="text-gray-500 text-sm">({tool.reviews_count.toLocaleString()})</span>
               </div>
               <div className="flex flex-wrap gap-3">
-                <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors">
-                  {t('visit')}
-                </a>
+                {/* Affiliate CTA — prominent */}
+                {affiliate ? (
+                  <a href={affiliate.url} target="_blank" rel="sponsored noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold transition-colors shadow-lg shadow-violet-500/20">
+                    {affiliate.badge && (
+                      <span className="px-1.5 py-0.5 rounded bg-white/20 text-[10px] font-black">{affiliate.badge}</span>
+                    )}
+                    {affiliateCta} →
+                  </a>
+                ) : (
+                  <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
+                    className="px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors">
+                    {t('visit')}
+                  </a>
+                )}
                 <Link href={`${base}/compare/${tool.slug}-vs-${related[0]?.slug ?? 'chatgpt'}`}
                   className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white text-sm transition-colors border border-gray-700">
                   {t('compare')}
                 </Link>
+                {/* Secondary visit link if affiliate exists */}
+                {affiliate && (
+                  <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
+                    className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-400 text-sm transition-colors border border-gray-700">
+                    {t('visit')}
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -173,6 +194,35 @@ export default async function ToolPage({ params }: Props) {
 
           {/* Sidebar */}
           <div className="space-y-4">
+            {/* Affiliate CTA Card */}
+            {affiliate && (
+              <div className="rounded-2xl p-5 text-center"
+                style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(109,40,217,0.08) 100%)', border: '1px solid rgba(139,92,246,0.3)' }}>
+                <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-2xl">
+                  {CATEGORY_ICONS[tool.category]}
+                </div>
+                <p className="text-white font-bold text-sm mb-1">{tool.name}</p>
+                <p className="text-gray-400 text-xs mb-4">{tagline.slice(0, 60)}...</p>
+                <a href={affiliate.url} target="_blank" rel="sponsored noopener noreferrer"
+                  className="block w-full py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-bold transition-colors">
+                  {affiliateCta} →
+                </a>
+                {tool.pricing !== 'free' && tool.price_monthly && (
+                  <p className="text-gray-500 text-xs mt-2">
+                    {locale === 'ar' ? 'يبدأ من' : 'From'} ${tool.price_monthly}/{locale === 'ar' ? 'شهر' : 'mo'}
+                  </p>
+                )}
+                {tool.pricing === 'free' && (
+                  <p className="text-green-400 text-xs mt-2 font-semibold">
+                    {locale === 'ar' ? '✓ متاح مجاناً' : '✓ Free to use'}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Ad unit in sidebar */}
+            <AdUnit slot="9182736450" format="rectangle" />
+
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
               <h3 className="font-bold text-white mb-3">{t('quickInfo')}</h3>
               <dl className="space-y-3 text-sm">
@@ -226,7 +276,29 @@ export default async function ToolPage({ params }: Props) {
           </div>
         </div>
 
-        <AdUnit slot="2847361905" format="horizontal" className="my-4" />
+        {/* Ad between content and reviews */}
+        <AdUnit slot="2847361905" format="horizontal" className="my-6" />
+
+        {/* Bottom Affiliate Banner — full width */}
+        {affiliate && (
+          <div className="rounded-2xl p-6 mb-6 flex items-center justify-between gap-4 flex-wrap"
+            style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(109,40,217,0.06) 100%)', border: '1px solid rgba(139,92,246,0.25)' }}>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gray-800 border border-violet-500/30 flex items-center justify-center text-2xl flex-shrink-0">
+                {CATEGORY_ICONS[tool.category]}
+              </div>
+              <div>
+                <p className="text-white font-bold">{tool.name}</p>
+                <p className="text-gray-400 text-sm">{tagline}</p>
+              </div>
+            </div>
+            <a href={affiliate.url} target="_blank" rel="sponsored noopener noreferrer"
+              className="px-6 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm transition-colors shadow-lg shadow-violet-500/20 whitespace-nowrap">
+              {affiliateCta} →
+            </a>
+          </div>
+        )}
+
         <ReviewSection toolSlug={tool.slug} toolName={tool.name} />
       </main>
     </>
