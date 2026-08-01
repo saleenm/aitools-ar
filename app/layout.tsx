@@ -27,9 +27,10 @@ export const metadata: Metadata = {
   },
 }
 
+// lang/dir are set dynamically by [locale]/layout.tsx via HtmlAttributes client component
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html suppressHydrationWarning className={cairo.variable}>
       <head>
         <script
           async
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${cairo.variable} font-cairo bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col`}>
+      <body suppressHydrationWarning className="font-cairo bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
         {children}
       </body>
     </html>

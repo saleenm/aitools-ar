@@ -3,8 +3,8 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import HtmlAttributes from '@/components/HtmlAttributes'
 
-const RTL_LOCALES = ['ar']
 const SUPPORTED = ['ar', 'en', 'fr', 'es', 'tr', 'de']
 
 interface Props {
@@ -17,17 +17,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!SUPPORTED.includes(locale)) notFound()
 
   const messages = await getMessages()
-  const dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr'
 
   return (
-    <html lang={locale} dir={dir}>
-      <body className="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col font-cairo">
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <HtmlAttributes locale={locale} />
+      <Header />
+      <div className="flex-1">{children}</div>
+      <Footer />
+    </NextIntlClientProvider>
   )
 }
