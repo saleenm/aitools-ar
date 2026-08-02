@@ -34,13 +34,12 @@ export default function ToolCard({ tool }: Props) {
   const domain = getDomain(tool.website_url)
   const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null
   const isNew = isNewTool(tool.launched_at)
-  const ratingPercent = Math.min((tool.rating / 5) * 100, 100)
 
   const pricingColor = tool.pricing === 'free'
     ? 'text-green-400 bg-green-400/10 border-green-400/20'
     : tool.pricing === 'freemium'
-    ? 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20'
-    : 'text-blue-400 bg-blue-400/10 border-blue-400/20'
+    ? 'text-blue-400 bg-blue-400/10 border-blue-400/20'
+    : 'text-orange-400 bg-orange-400/10 border-orange-400/20'
 
   const pricingLabel = tool.pricing === 'free'
     ? t('free')
@@ -50,7 +49,8 @@ export default function ToolCard({ tool }: Props) {
 
   return (
     <Link href={`/${locale}/tools/${tool.slug}`}
-      className="group flex flex-col bg-gray-900/80 border border-gray-800/60 hover:border-violet-500/40 rounded-2xl p-5 tool-glow shine-card min-h-[220px]">
+      className="group flex flex-col border rounded-2xl p-5 tool-glow shine-card min-h-[220px] relative overflow-hidden"
+      style={{ background: 'rgba(13,17,23,0.75)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderColor: 'rgba(255,255,255,0.07)' }}>
 
       {/* Header row */}
       <div className="flex items-start justify-between mb-4">
@@ -109,17 +109,28 @@ export default function ToolCard({ tool }: Props) {
       {/* Tagline */}
       <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-2 flex-1">{tagline}</p>
 
-      {/* Rating bar */}
-      <div className="mb-4">
-        <div className="h-1 rounded-full bg-gray-800/80 overflow-hidden">
-          <div
-            className="h-full rounded-full transition-all"
-            style={{
-              width: `${ratingPercent}%`,
-              background: 'linear-gradient(90deg, #7c3aed, #ec4899)',
-            }}
-          />
-        </div>
+      {/* Star rating */}
+      <div className="flex items-center gap-1 mb-4">
+        {[1,2,3,4,5].map((star) => {
+          const filled = tool.rating >= star
+          const half = !filled && tool.rating >= star - 0.5
+          return (
+            <svg key={star} width="13" height="13" viewBox="0 0 24 24"
+              fill={filled ? '#f59e0b' : half ? 'url(#half)' : 'none'}
+              stroke={filled || half ? '#f59e0b' : '#374151'} strokeWidth="1.5">
+              {half && (
+                <defs>
+                  <linearGradient id="half">
+                    <stop offset="50%" stopColor="#f59e0b"/>
+                    <stop offset="50%" stopColor="transparent"/>
+                  </linearGradient>
+                </defs>
+              )}
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          )
+        })}
+        <span className="text-xs text-gray-400 ms-1">{tool.rating.toFixed(1)}</span>
       </div>
 
       {/* Tags row */}
@@ -133,14 +144,8 @@ export default function ToolCard({ tool }: Props) {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-3 border-t border-gray-800/50">
-        <div className="flex items-center gap-1">
-          <svg width="13" height="13" fill="#facc15" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          <span className="text-white text-sm font-bold">{tool.rating.toFixed(1)}</span>
-          <span className="text-gray-600 text-xs">({tool.reviews_count.toLocaleString()})</span>
-        </div>
+      <div className="flex items-center justify-between pt-3 border-t border-gray-800/40">
+        <span className="text-gray-600 text-xs">({tool.reviews_count.toLocaleString()})</span>
         <span className="text-xs text-violet-400 font-semibold group-hover:text-violet-300 transition-colors flex items-center gap-1">
           {isArabic ? 'عرض التفاصيل' : 'Details'}
           <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

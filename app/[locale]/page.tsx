@@ -72,35 +72,53 @@ export default async function HomePage({ params, searchParams }: PageProps) {
 
       {/* ── HERO ── */}
       {!isFiltered && (
-        <section className="relative overflow-hidden border-b border-gray-800/50"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139,92,246,0.12) 0%, rgba(236,72,153,0.04) 40%, transparent 70%), #030712' }}>
-          <div className="max-w-4xl mx-auto px-4 pt-20 pb-16 text-center">
+        <section className="relative overflow-hidden border-b border-gray-800/50">
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 animate-gradient-shift"
+            style={{ background: 'linear-gradient(135deg, #030712 0%, #0d0521 25%, #030712 50%, #050a1a 75%, #030712 100%)', backgroundSize: '400% 400%' }} />
+
+          {/* Dot pattern overlay */}
+          <div className="absolute inset-0 dot-pattern opacity-40" />
+
+          {/* Floating orbs */}
+          <div className="absolute top-16 left-[10%] w-64 h-64 rounded-full animate-orb-drift pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+          <div className="absolute top-8 right-[8%] w-80 h-80 rounded-full animate-orb-drift-reverse pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(236,72,153,0.12) 0%, transparent 70%)', filter: 'blur(50px)' }} />
+          <div className="absolute bottom-0 left-[30%] w-96 h-48 rounded-full animate-float-slow pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none animate-pulse-glow"
+            style={{ background: 'radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+
+          <div className="relative max-w-4xl mx-auto px-4 pt-24 pb-20 text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-xs font-bold mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse inline-block" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-bold mb-8 animate-pulse-glow"
+              style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.2), rgba(236,72,153,0.1))', borderColor: 'rgba(139,92,246,0.4)', color: '#c4b5fd', boxShadow: '0 0 20px rgba(139,92,246,0.2)' }}>
+              <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse inline-block" />
               🚀 {t('badge')}
+              <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse inline-block" style={{ animationDelay: '0.5s' }} />
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-5 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
               {t('title')}{' '}
-              <TypewriterText />
+              <span className="hero-gradient-text"><TypewriterText /></span>
             </h1>
 
-            <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-xl mb-12 max-w-xl mx-auto leading-relaxed">
               {t('subtitle')}
             </p>
 
-            {/* Stats bar */}
-            <div className="inline-flex items-center gap-0 rounded-2xl border border-gray-800/60 overflow-hidden mb-10"
-              style={{ background: 'rgba(13,17,23,0.8)' }}>
+            {/* Stats bar — glassmorphism */}
+            <div className="inline-flex items-center gap-0 rounded-2xl overflow-hidden mb-12 glass-morphism"
+              style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)' }}>
               {[
-                { val: t('stat1Value'), label: t('stat1Label') },
-                { val: t('stat2Value'), label: t('stat2Label') },
-                { val: t('stat3Value'), label: t('stat3Label') },
+                { val: t('stat1Value'), label: t('stat1Label'), color: 'text-violet-300' },
+                { val: t('stat2Value'), label: t('stat2Label'), color: 'text-pink-300' },
+                { val: t('stat3Value'), label: t('stat3Label'), color: 'text-blue-300' },
               ].map((s, i) => (
-                <div key={i} className={`px-6 py-3 text-center ${i < 2 ? 'border-e border-gray-800/60' : ''}`}>
-                  <div className="text-white font-black text-xl">{s.val}</div>
-                  <div className="text-gray-500 text-xs">{s.label}</div>
+                <div key={i} className={`px-8 py-4 text-center ${i < 2 ? 'border-e border-white/10' : ''}`}>
+                  <div className={`font-black text-2xl ${s.color}`}>{s.val}</div>
+                  <div className="text-gray-500 text-xs mt-0.5">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -109,8 +127,8 @@ export default async function HomePage({ params, searchParams }: PageProps) {
             <div className="flex flex-wrap justify-center gap-2">
               {featuredTools.map((tool) => (
                 <Link key={tool.slug} href={`${base}/tools/${tool.slug}`}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-gray-700/60 text-sm text-gray-300 hover:border-violet-500/50 hover:text-white transition-all"
-                  style={{ background: 'rgba(13,17,23,0.8)' }}>
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm text-gray-300 hover:text-white transition-all glow-border-hover"
+                  style={{ background: 'rgba(13,17,23,0.7)', border: '1px solid rgba(255,255,255,0.08)', backdropFilter: 'blur(8px)' }}>
                   <span>{CATEGORY_ICONS[tool.category]}</span>
                   {tool.name}
                 </Link>
@@ -150,6 +168,33 @@ export default async function HomePage({ params, searchParams }: PageProps) {
                   style={{ background: 'rgba(13,17,23,0.8)' }}>
                   <span className="text-base">{CATEGORY_ICONS[tool.category]}</span>
                   <span className="text-sm text-gray-300 font-medium whitespace-nowrap">{tool.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── NEW THIS MONTH SECTION ── */}
+      {!isFiltered && (
+        <div className="border-b border-gray-800/50" style={{ background: '#040810' }}>
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
+                🆕 {isRTL ? 'جديد هذا الشهر' : 'New This Month'}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {featuredTools.slice(0, 6).map((tool) => (
+                <Link key={tool.slug} href={`${base}/tools/${tool.slug}`}
+                  className="flex flex-col items-center gap-2 p-3 rounded-xl border border-gray-800/60 hover:border-emerald-500/40 transition-all text-center group"
+                  style={{ background: 'rgba(13,17,23,0.8)' }}>
+                  <span className="text-2xl">{CATEGORY_ICONS[tool.category]}</span>
+                  <span className="text-xs text-gray-300 font-medium group-hover:text-emerald-300 transition-colors leading-tight">{tool.name}</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 font-bold">
+                    ✨ New
+                  </span>
                 </Link>
               ))}
             </div>

@@ -72,11 +72,35 @@ export default async function ToolPage({ params }: Props) {
     { question: `What category is ${tool.name}?`, answer: `${tool.name} is an AI tool in the ${tool.category} category.` },
   ])
 
+  const softwareAppLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: tool.name,
+    applicationCategory: 'AIApplication',
+    operatingSystem: 'Web',
+    description: tagline,
+    url: tool.website_url,
+    offers: {
+      '@type': 'Offer',
+      price: tool.pricing === 'free' ? '0' : tool.price_monthly ? String(tool.price_monthly) : '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/OnlineOnly',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: String(tool.rating),
+      ratingCount: String(tool.reviews_count),
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppLd) }} />
       <main className="max-w-5xl mx-auto px-4 py-10" style={{ background: '#030712' }}>
         {/* Breadcrumb */}
         <nav className="text-xs text-gray-500 mb-6 flex items-center gap-1.5">
