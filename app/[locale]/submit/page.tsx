@@ -9,13 +9,34 @@ export default function SubmitPage() {
   const tc = useTranslations('categories')
   const locale = useLocale()
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({
     name: '', website: '', category: '', pricing: '', description: '', email: '',
   })
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+
+    try {
+      const res = await fetch('/api/submit-tool', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        setError(data.error || 'حدث خطأ، حاول مجدداً')
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setError('حدث خطأ في الاتصال، حاول مجدداً')
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -119,11 +140,28 @@ export default function SubmitPage() {
           />
         </div>
 
+        {error && (
+          <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+            {error}
+          </div>
+        )}
+
         <button
           type="submit"
-          className="w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold transition-colors"
+          disabled={loading}
+          className="w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold transition-colors flex items-center justify-center gap-2"
         >
-          {t('submitButton')} 🚀
+          {loading ? (
+            <>
+              <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+              </svg>
+              جاري الإرسال...
+            </>
+          ) : (
+            <>{t('submitButton')} 🚀</>
+          )}
         </button>
       </form>
     </main>
