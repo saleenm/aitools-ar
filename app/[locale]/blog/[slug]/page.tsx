@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { getBlogPost, getRecentPosts } from '@/lib/blog'
-import AdUnit from '@/components/AdUnit'
 
 interface Props {
   params: { locale: string; slug: string }
@@ -144,13 +143,9 @@ export default async function BlogPostPage({ params }: Props) {
               <p className="text-gray-400 text-lg leading-relaxed">{post.description}</p>
             </div>
 
-            <AdUnit slot="5193847261" format="horizontal" className="mb-6" />
-
             <div className="prose-custom">
               <ul className="list-none p-0 m-0">{renderContent(post.content)}</ul>
             </div>
-
-            <AdUnit slot="7384920156" format="rectangle" className="mt-8" />
 
             {/* Share */}
             <div className="mt-10 pt-6 border-t border-gray-800">

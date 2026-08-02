@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import FilterBar from '@/components/FilterBar'
 import ToolCard from '@/components/ToolCard'
-import AdUnit from '@/components/AdUnit'
 import TypewriterText from '@/components/AIHero'
 import NewsletterCTA from '@/components/NewsletterCTA'
 import { getTools } from '@/lib/data'
@@ -188,11 +187,6 @@ export default async function HomePage({ params, searchParams }: PageProps) {
               {tools.slice(0, 6).map((tool) => <ToolCard key={tool.id} tool={tool} />)}
             </div>
 
-            {/* Ad after first 6 */}
-            {tools.length > 6 && (
-              <AdUnit slot="1234567890" format="horizontal" className="my-6 rounded-xl overflow-hidden" />
-            )}
-
             {tools.length > 6 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
                 {tools.slice(6).map((tool) => <ToolCard key={tool.id} tool={tool} />)}
@@ -247,8 +241,6 @@ export default async function HomePage({ params, searchParams }: PageProps) {
           </div>
         )}
 
-        {/* Bottom Ad */}
-        <AdUnit slot="0987654321" format="horizontal" className="mt-10 rounded-xl overflow-hidden" />
       </main>
     </>
   )

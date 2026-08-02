@@ -6,7 +6,6 @@ import { getToolBySlug, getTools } from '@/lib/data'
 import { CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
-import AdUnit from '@/components/AdUnit'
 import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
 import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedDescription } from '@/lib/tool-i18n'
 import { getAffiliateLink, AFFILIATE_CTA_LABELS } from '@/lib/affiliate'
@@ -236,9 +235,6 @@ export default async function ToolPage({ params }: Props) {
               </div>
             )}
 
-            {/* Ad unit in sidebar */}
-            <AdUnit slot="9182736450" format="rectangle" />
-
             <div className="bg-gray-900/80 border border-gray-800/60 rounded-2xl p-5">
               <h3 className="font-black text-white text-sm mb-4 flex items-center gap-2">
                 <svg width="13" height="13" fill="none" stroke="#a78bfa" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -303,9 +299,6 @@ export default async function ToolPage({ params }: Props) {
             )}
           </div>
         </div>
-
-        {/* Ad between content and reviews */}
-        <AdUnit slot="2847361905" format="horizontal" className="my-6" />
 
         {/* Bottom Affiliate Banner — full width */}
         {affiliate && (
