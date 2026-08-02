@@ -2072,6 +2072,409 @@ Zahlen Sie nie, ohne die kostenlose Version mindestens eine Woche zu testen.
       },
     },
   },
+  // ── NEW POST 1: GPT-4o vs Claude 3.5 ──────────────────────────────────────
+  {
+    slug: 'gpt4o-vs-claude-3-5',
+    date: '2026-07-15',
+    readTime: 7,
+    image: '⚔️',
+    i18n: {
+      ar: {
+        title: 'GPT-4o مقابل Claude 3.5 — أيهما أفضل في 2026؟',
+        description: 'مقارنة شاملة بين GPT-4o من OpenAI وClaude 3.5 من Anthropic — الأداء، الأسعار، وأفضل حالات الاستخدام.',
+        category: 'مقارنات',
+        content: `
+## GPT-4o مقابل Claude 3.5 — المعركة الكبرى في 2026
+
+نموذجان يهيمنان على عالم الذكاء الاصطناعي في 2026. لكن أيهما يناسبك؟
+
+### GPT-4o — القوة والسرعة
+GPT-4o هو الأسرع والأكثر تعدديةً من OpenAI. يدعم النص، الصور، والصوت في وقت واحد.
+
+**المميزات:**
+- استجابة فورية تقريباً
+- دعم الصور والصوت
+- تكامل مع ChatGPT Plus وAPI
+
+**العيوب:**
+- أحياناً يبالغ في الإجابات
+- القيود المفروضة على المحتوى
+
+### Claude 3.5 — الدقة والتحليل
+Claude 3.5 Sonnet من Anthropic هو الأمثل لتحليل المستندات والكتابة الاحترافية.
+
+**المميزات:**
+- سياق 200,000 توكن (الأطول في السوق)
+- ممتاز في تحليل PDFs والكود
+- أقل هلوسةً من GPT-4o
+
+**العيوب:**
+- أبطأ قليلاً
+- لا يدعم الصوت حالياً
+
+### الحكم النهائي
+
+| الاستخدام | الفائز |
+|-----------|--------|
+| الكتابة الإبداعية | GPT-4o |
+| تحليل المستندات | Claude 3.5 |
+| البرمجة | Claude 3.5 |
+| المحادثة اليومية | GPT-4o |
+| تحليل الصور | GPT-4o |
+
+**التوصية:** إذا كنت تستخدم واحداً فقط، جرّب ChatGPT Plus (GPT-4o) للاستخدام العام. لكن للعمل الاحترافي وتحليل المستندات — Claude 3.5 لا منافس له.
+        `,
+      },
+      en: {
+        title: 'GPT-4o vs Claude 3.5 — Which Is Better in 2026?',
+        description: 'A comprehensive comparison between GPT-4o from OpenAI and Claude 3.5 from Anthropic — performance, pricing, and best use cases.',
+        category: 'Comparisons',
+        content: `
+## GPT-4o vs Claude 3.5 — The Big Battle in 2026
+
+Two models dominate the AI world in 2026. But which one is right for you?
+
+### GPT-4o — Speed and Versatility
+GPT-4o is OpenAI's fastest and most versatile model. It supports text, images, and audio simultaneously.
+
+**Pros:** Near-instant responses, multimodal (images + audio), ChatGPT Plus integration
+**Cons:** Sometimes over-verbose, content restrictions
+
+### Claude 3.5 — Precision and Analysis
+Claude 3.5 Sonnet from Anthropic excels at document analysis and professional writing.
+
+**Pros:** 200K token context window, excellent at PDFs and code, fewer hallucinations
+**Cons:** Slightly slower, no audio support yet
+
+### Verdict
+
+| Use Case | Winner |
+|----------|--------|
+| Creative writing | GPT-4o |
+| Document analysis | Claude 3.5 |
+| Coding | Claude 3.5 |
+| Daily chat | GPT-4o |
+| Image analysis | GPT-4o |
+
+**Recommendation:** For general use, GPT-4o via ChatGPT Plus wins. For professional document work — Claude 3.5 is unmatched.
+        `,
+      },
+      fr: {
+        title: 'GPT-4o vs Claude 3.5 — Lequel est le meilleur en 2026 ?',
+        description: 'Comparaison complète entre GPT-4o d\'OpenAI et Claude 3.5 d\'Anthropic.',
+        category: 'Comparaisons',
+        content: `## GPT-4o vs Claude 3.5\n\nDeux modèles dominent l'IA en 2026. GPT-4o excelle en vitesse et multimodalité. Claude 3.5 brille pour l'analyse documentaire avec 200K tokens de contexte.\n\n**Verdict:** GPT-4o pour l'usage général, Claude 3.5 pour le travail professionnel.`,
+      },
+      es: {
+        title: 'GPT-4o vs Claude 3.5 — ¿Cuál es mejor en 2026?',
+        description: 'Comparación completa entre GPT-4o de OpenAI y Claude 3.5 de Anthropic.',
+        category: 'Comparaciones',
+        content: `## GPT-4o vs Claude 3.5\n\nDos modelos dominan la IA en 2026. GPT-4o destaca en velocidad y multimodalidad. Claude 3.5 brilla para análisis de documentos con 200K tokens de contexto.\n\n**Veredicto:** GPT-4o para uso general, Claude 3.5 para trabajo profesional.`,
+      },
+      tr: {
+        title: 'GPT-4o vs Claude 3.5 — 2026\'da Hangisi Daha İyi?',
+        description: 'OpenAI\'nın GPT-4o\'su ile Anthropic\'in Claude 3.5\'i arasında kapsamlı karşılaştırma.',
+        category: 'Karşılaştırmalar',
+        content: `## GPT-4o vs Claude 3.5\n\n2026'da iki model AI dünyasına hâkim. GPT-4o hız ve çok modalite konusunda öne çıkıyor. Claude 3.5, 200K token bağlamıyla belge analizinde parlıyor.\n\n**Karar:** Genel kullanım için GPT-4o, profesyonel iş için Claude 3.5.`,
+      },
+      de: {
+        title: 'GPT-4o vs Claude 3.5 — Welches ist besser in 2026?',
+        description: 'Umfassender Vergleich zwischen GPT-4o von OpenAI und Claude 3.5 von Anthropic.',
+        category: 'Vergleiche',
+        content: `## GPT-4o vs Claude 3.5\n\nZwei Modelle dominieren die KI-Welt 2026. GPT-4o punktet mit Geschwindigkeit und Multimodalität. Claude 3.5 glänzt bei der Dokumentenanalyse mit 200K Token Kontext.\n\n**Fazit:** GPT-4o für den allgemeinen Gebrauch, Claude 3.5 für professionelle Arbeit.`,
+      },
+    },
+  },
+
+  // ── NEW POST 2: AI Video Tools ─────────────────────────────────────────────
+  {
+    slug: 'best-ai-video-tools-2026',
+    date: '2026-07-20',
+    readTime: 6,
+    image: '🎬',
+    i18n: {
+      ar: {
+        title: 'أفضل أدوات توليد الفيديو بالذكاء الاصطناعي في 2026',
+        description: 'مقارنة Sora وRunway وKling وPika — كيف تختار الأداة المناسبة لتوليد الفيديو AI.',
+        category: 'مراجعات',
+        content: `
+## ثورة الفيديو بالذكاء الاصطناعي في 2026
+
+لم يعد توليد الفيديو حلماً بعيداً — هذه الأدوات الأربع تقود الثورة:
+
+### 1. Sora — من OpenAI
+أحدث ثورة حين أُطلق. يولّد فيديوهات عالية الجودة من نص.
+- **الجودة:** ⭐⭐⭐⭐⭐
+- **السعر:** مشترك ChatGPT Plus
+
+### 2. Runway Gen-3
+الأكثر نضجاً للاستخدام الاحترافي. يدعم تحرير الفيديو وليس فقط التوليد.
+- **الجودة:** ⭐⭐⭐⭐⭐
+- **السعر:** من $12/شهر
+
+### 3. Kling من Kuaishou
+المنافس الصيني القوي. جودة مذهلة لفيديوهات تصل 2 دقيقة.
+- **الجودة:** ⭐⭐⭐⭐
+- **السعر:** مجاني بحدود شهرية
+
+### 4. Pika 2.0
+الأسهل استخداماً للمبتدئين. واجهة بسيطة ونتائج سريعة.
+- **الجودة:** ⭐⭐⭐⭐
+- **السعر:** خطة مجانية متاحة
+
+### أيها تختار؟
+- **للمحترفين:** Runway Gen-3
+- **للجودة القصوى:** Sora
+- **للمبتدئين:** Pika 2.0
+- **للميزانية المحدودة:** Kling
+        `,
+      },
+      en: {
+        title: 'Best AI Video Generation Tools in 2026',
+        description: 'Comparing Sora, Runway, Kling, and Pika — how to choose the right AI video tool.',
+        category: 'Reviews',
+        content: `
+## The AI Video Revolution in 2026
+
+AI video generation is no longer a dream — these four tools are leading the revolution:
+
+### 1. Sora — from OpenAI
+Groundbreaking quality when generating videos from text prompts.
+- **Quality:** ⭐⭐⭐⭐⭐ | **Price:** ChatGPT Plus subscription
+
+### 2. Runway Gen-3
+Most mature for professional use. Supports video editing, not just generation.
+- **Quality:** ⭐⭐⭐⭐⭐ | **Price:** From $12/month
+
+### 3. Kling by Kuaishou
+Strong Chinese competitor. Amazing quality for videos up to 2 minutes.
+- **Quality:** ⭐⭐⭐⭐ | **Price:** Free with monthly limits
+
+### 4. Pika 2.0
+Easiest for beginners. Simple interface with fast results.
+- **Quality:** ⭐⭐⭐⭐ | **Price:** Free plan available
+
+### Which to choose?
+- **Professionals:** Runway Gen-3 | **Max quality:** Sora
+- **Beginners:** Pika 2.0 | **Budget:** Kling
+        `,
+      },
+      fr: {
+        title: 'Meilleurs outils IA de génération vidéo en 2026',
+        description: 'Comparaison Sora, Runway, Kling et Pika — quel outil choisir pour la vidéo IA.',
+        category: 'Avis',
+        content: `## Révolution vidéo IA 2026\n\n**Sora** (OpenAI) — qualité maximale. **Runway Gen-3** — usage professionnel. **Kling** — gratuit avec limites mensuelles. **Pika 2.0** — idéal débutants.\n\nPour les pros: Runway. Pour la qualité: Sora. Pour débuter: Pika.`,
+      },
+      es: {
+        title: 'Mejores herramientas de vídeo IA en 2026',
+        description: 'Comparación Sora, Runway, Kling y Pika — cómo elegir la herramienta de vídeo IA correcta.',
+        category: 'Reseñas',
+        content: `## Revolución de vídeo IA 2026\n\n**Sora** (OpenAI) — máxima calidad. **Runway Gen-3** — uso profesional. **Kling** — gratis con límites mensuales. **Pika 2.0** — ideal principiantes.\n\nPara profesionales: Runway. Para calidad: Sora. Para empezar: Pika.`,
+      },
+      tr: {
+        title: '2026\'da En İyi AI Video Araçları',
+        description: 'Sora, Runway, Kling ve Pika karşılaştırması — doğru AI video aracını nasıl seçersiniz.',
+        category: 'İncelemeler',
+        content: `## 2026 AI Video Devrimi\n\n**Sora** (OpenAI) — maksimum kalite. **Runway Gen-3** — profesyonel kullanım. **Kling** — aylık limitlerle ücretsiz. **Pika 2.0** — başlangıç için ideal.\n\nProfesyoneller için: Runway. Kalite için: Sora. Başlangıç için: Pika.`,
+      },
+      de: {
+        title: 'Beste KI-Video-Tools 2026',
+        description: 'Vergleich Sora, Runway, Kling und Pika — das richtige KI-Video-Tool wählen.',
+        category: 'Bewertungen',
+        content: `## KI-Video-Revolution 2026\n\n**Sora** (OpenAI) — maximale Qualität. **Runway Gen-3** — professioneller Einsatz. **Kling** — kostenlos mit monatlichen Limits. **Pika 2.0** — ideal für Einsteiger.\n\nFür Profis: Runway. Für Qualität: Sora. Für Einsteiger: Pika.`,
+      },
+    },
+  },
+
+  // ── NEW POST 3: AI tools for students ─────────────────────────────────────
+  {
+    slug: 'ai-tools-for-students-2026',
+    date: '2026-07-25',
+    readTime: 5,
+    image: '🎓',
+    i18n: {
+      ar: {
+        title: 'أفضل أدوات الذكاء الاصطناعي للطلاب في 2026',
+        description: 'دليل الطالب الكامل لأدوات AI المجانية — من كتابة الأبحاث إلى تلخيص الكتب والمذاكرة الذكية.',
+        category: 'دليل',
+        content: `
+## الطالب الذكي يستخدم الذكاء الاصطناعي
+
+في 2026، الطلاب الذين يستخدمون AI بشكل صحيح يوفّرون ساعات يومياً. إليك أفضل الأدوات:
+
+### للبحث والكتابة الأكاديمية
+**1. ChatGPT (مجاني)** — للتفسير، توليد الأفكار، مراجعة الكتابة
+**2. Claude (مجاني)** — الأفضل لقراءة وتحليل PDFs والمقالات العلمية
+**3. Perplexity AI (مجاني)** — للبحث مع مصادر موثّقة
+
+### للمذاكرة والفهم
+**4. Notion AI** — إنشاء ملاحظات ذكية ومراجعة منظّمة
+**5. Otter.ai (مجاني جزئياً)** — تحويل محاضرات الفيديو إلى نص
+
+### للعروض التقديمية
+**6. Canva AI (مجاني)** — عروض احترافية في دقائق
+**7. Gamma** — بديل ممتاز لـ PowerPoint بالذكاء الاصطناعي
+
+### نصائح مهمة
+- استخدم AI للتعلم، ليس للغش
+- تحقق دائماً من المعلومات من مصادر موثوقة
+- استخدم Perplexity للبحث لأنه يُظهر المصادر
+        `,
+      },
+      en: {
+        title: 'Best AI Tools for Students in 2026',
+        description: 'The complete student guide to free AI tools — from writing research to summarizing books and smart studying.',
+        category: 'Guide',
+        content: `
+## Smart Students Use AI
+
+In 2026, students using AI correctly save hours every day. Here are the best tools:
+
+**For research & academic writing:**
+- ChatGPT (free) — ideation, explaining concepts, writing review
+- Claude (free) — best for reading and analyzing PDFs and academic papers
+- Perplexity AI (free) — research with cited sources
+
+**For studying & comprehension:**
+- Notion AI — smart notes and organized review
+- Otter.ai (freemium) — convert video lectures to text
+
+**For presentations:**
+- Canva AI (free) — professional slides in minutes
+- Gamma — excellent AI-powered PowerPoint alternative
+
+**Important tips:**
+- Use AI to learn, not to cheat
+- Always verify information from reliable sources
+- Use Perplexity for research because it shows citations
+        `,
+      },
+      fr: {
+        title: 'Meilleurs outils IA pour les étudiants en 2026',
+        description: 'Guide complet des outils IA gratuits pour étudiants.',
+        category: 'Guide',
+        content: `## IA pour étudiants 2026\n\n**Recherche:** ChatGPT, Claude, Perplexity AI\n**Révisions:** Notion AI, Otter.ai\n**Présentations:** Canva AI, Gamma\n\nConseil: Utilisez l'IA pour apprendre, pas pour tricher. Vérifiez toujours les informations.`,
+      },
+      es: {
+        title: 'Mejores herramientas IA para estudiantes en 2026',
+        description: 'Guía completa de herramientas IA gratuitas para estudiantes.',
+        category: 'Guía',
+        content: `## IA para estudiantes 2026\n\n**Investigación:** ChatGPT, Claude, Perplexity AI\n**Estudio:** Notion AI, Otter.ai\n**Presentaciones:** Canva AI, Gamma\n\nConsejo: Usa IA para aprender, no para hacer trampa. Siempre verifica la información.`,
+      },
+      tr: {
+        title: '2026\'da Öğrenciler İçin En İyi AI Araçları',
+        description: 'Öğrenciler için ücretsiz AI araçları tam kılavuzu.',
+        category: 'Rehber',
+        content: `## Öğrenciler için AI 2026\n\n**Araştırma:** ChatGPT, Claude, Perplexity AI\n**Çalışma:** Notion AI, Otter.ai\n**Sunumlar:** Canva AI, Gamma\n\nİpucu: Hile yapmak için değil, öğrenmek için AI kullanın. Bilgileri her zaman doğrulayın.`,
+      },
+      de: {
+        title: 'Beste KI-Tools für Studenten 2026',
+        description: 'Vollständiger Leitfaden für kostenlose KI-Tools für Studenten.',
+        category: 'Leitfaden',
+        content: `## KI für Studenten 2026\n\n**Recherche:** ChatGPT, Claude, Perplexity AI\n**Lernen:** Notion AI, Otter.ai\n**Präsentationen:** Canva AI, Gamma\n\nTipp: Nutze KI zum Lernen, nicht zum Schummeln. Überprüfe Informationen immer aus zuverlässigen Quellen.`,
+      },
+    },
+  },
+
+  // ── NEW POST 4: Grok 3 review ──────────────────────────────────────────────
+  {
+    slug: 'grok-3-review-2026',
+    date: '2026-07-28',
+    readTime: 5,
+    image: '🚀',
+    i18n: {
+      ar: {
+        title: 'مراجعة Grok 3 — هل يتفوق على ChatGPT وClaude؟',
+        description: 'مراجعة شاملة لـ Grok 3 من xAI — الأداء، المميزات، والمقارنة مع GPT-4o وClaude 3.5.',
+        category: 'مراجعات',
+        content: `
+## Grok 3 — المنافس الجديد القوي
+
+xAI (شركة إيلون ماسك) أطلقت Grok 3 في 2026 وأثارت ضجة كبيرة. هل يستحق الاهتمام؟
+
+### ما يميز Grok 3
+**1. بيانات X في الوقت الحقيقي**
+Grok متصل بمنصة X (تويتر) مما يعني وصولاً فورياً لأحدث الأخبار والتغريدات.
+
+**2. وضع "لا قيود"**
+Grok أقل تقييداً من ChatGPT وClaude في بعض المواضيع.
+
+**3. الفكاهة والشخصية**
+تم تصميمه ليكون أكثر "شخصية" وفكاهةً من المنافسين.
+
+### النقاط الضعيفة
+- يتطلب اشتراك X Premium
+- التحليل العميق أضعف من Claude 3.5
+- لا يدعم الملفات والمستندات بشكل كامل
+
+### المقارنة السريعة
+
+| الميزة | Grok 3 | GPT-4o | Claude 3.5 |
+|--------|--------|--------|------------|
+| الأخبار الحية | ✅ | ❌ | ❌ |
+| التحليل | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| السعر | X Premium | $20/شهر | $20/شهر |
+
+### الخلاصة
+Grok 3 ممتاز للمتابعين الأخبار والاجتماعيين. لكنه ليس بديلاً عن ChatGPT أو Claude للعمل الاحترافي.
+        `,
+      },
+      en: {
+        title: 'Grok 3 Review 2026 — Does It Beat ChatGPT and Claude?',
+        description: 'Comprehensive review of Grok 3 from xAI — performance, features, and comparison with GPT-4o and Claude 3.5.',
+        category: 'Reviews',
+        content: `
+## Grok 3 — The Powerful New Competitor
+
+xAI (Elon Musk's company) released Grok 3 in 2026 making waves. Is it worth attention?
+
+### What makes Grok 3 unique
+**1. Real-time X data** — Connected to X (Twitter) for instant access to latest news and posts.
+**2. "No limits" mode** — Less restricted than ChatGPT and Claude on some topics.
+**3. Humor and personality** — Designed to be more personable than competitors.
+
+### Weaknesses
+- Requires X Premium subscription
+- Deep analysis weaker than Claude 3.5
+- Limited document/file support
+
+### Quick Comparison
+
+| Feature | Grok 3 | GPT-4o | Claude 3.5 |
+|---------|--------|--------|------------|
+| Live news | ✅ | ❌ | ❌ |
+| Analysis | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Price | X Premium | $20/mo | $20/mo |
+
+**Bottom line:** Grok 3 is excellent for news followers. But it's not a replacement for professional work with ChatGPT or Claude.
+        `,
+      },
+      fr: {
+        title: 'Avis Grok 3 2026 — Surpasse-t-il ChatGPT et Claude ?',
+        description: 'Avis complet sur Grok 3 de xAI — performances, fonctionnalités et comparaison.',
+        category: 'Avis',
+        content: `## Grok 3 — Nouveau concurrent puissant\n\nGrok 3 se distingue par: données X en temps réel, moins de restrictions, personnalité unique.\n\n**Faiblesses:** Nécessite X Premium, analyse plus faible que Claude 3.5.\n\n**Verdict:** Excellent pour l'actualité, pas un remplacement pour le travail professionnel.`,
+      },
+      es: {
+        title: 'Reseña Grok 3 2026 — ¿Supera a ChatGPT y Claude?',
+        description: 'Reseña completa de Grok 3 de xAI — rendimiento, características y comparación.',
+        category: 'Reseñas',
+        content: `## Grok 3 — Nuevo competidor poderoso\n\nGrok 3 destaca por: datos X en tiempo real, menos restricciones, personalidad única.\n\n**Debilidades:** Requiere X Premium, análisis más débil que Claude 3.5.\n\n**Veredicto:** Excelente para noticias, no reemplaza trabajo profesional.`,
+      },
+      tr: {
+        title: 'Grok 3 İncelemesi 2026 — ChatGPT ve Claude\'u Geçiyor mu?',
+        description: 'xAI\'nın Grok 3\'ünün kapsamlı incelemesi — performans, özellikler ve karşılaştırma.',
+        category: 'İncelemeler',
+        content: `## Grok 3 — Güçlü Yeni Rakip\n\nGrok 3 öne çıkıyor: gerçek zamanlı X verileri, daha az kısıtlama, benzersiz kişilik.\n\n**Zayıflıklar:** X Premium gerektirir, Claude 3.5'ten daha zayıf analiz.\n\n**Karar:** Haberler için mükemmel, profesyonel iş için yerini almaz.`,
+      },
+      de: {
+        title: 'Grok 3 Bewertung 2026 — Schlägt es ChatGPT und Claude?',
+        description: 'Umfassende Bewertung von Grok 3 von xAI — Leistung, Funktionen und Vergleich.',
+        category: 'Bewertungen',
+        content: `## Grok 3 — Starker neuer Konkurrent\n\nGrok 3 zeichnet sich aus durch: Echtzeit-X-Daten, weniger Einschränkungen, einzigartige Persönlichkeit.\n\n**Schwächen:** Erfordert X Premium, schwächere Analyse als Claude 3.5.\n\n**Fazit:** Ausgezeichnet für Nachrichten, kein Ersatz für professionelle Arbeit.`,
+      },
+    },
+  },
 ]
 
 export function getBlogPost(slug: string, locale: string = 'ar'): BlogPost | undefined {

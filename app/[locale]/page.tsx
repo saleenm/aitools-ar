@@ -4,6 +4,8 @@ import { getTranslations } from 'next-intl/server'
 import FilterBar from '@/components/FilterBar'
 import ToolCard from '@/components/ToolCard'
 import AdUnit from '@/components/AdUnit'
+import TypewriterText from '@/components/AIHero'
+import NewsletterCTA from '@/components/NewsletterCTA'
 import { getTools } from '@/lib/data'
 import { buildAlternates, buildWebsiteJsonLd } from '@/lib/seo'
 import { CATEGORY_ICONS, CATEGORY_LABELS } from '@/lib/types'
@@ -80,10 +82,7 @@ export default async function HomePage({ params, searchParams }: PageProps) {
 
             <h1 className="text-4xl md:text-6xl font-black text-white mb-5 leading-tight tracking-tight">
               {t('title')}{' '}
-              <span className="text-transparent bg-clip-text"
-                style={{ backgroundImage: 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)' }}>
-                {t('titleHighlight')}
-              </span>
+              <TypewriterText />
             </h1>
 
             <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
@@ -132,6 +131,27 @@ export default async function HomePage({ params, searchParams }: PageProps) {
                 {isRTL ? CATEGORY_LABELS[cat] : cat.charAt(0).toUpperCase() + cat.slice(1)}
               </Link>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── TRENDING SECTION ── */}
+      {!isFiltered && (
+        <div className="border-b border-gray-800/50" style={{ background: '#030712' }}>
+          <div className="max-w-7xl mx-auto px-4 py-5">
+            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+              🔥 {isRTL ? 'أكثر الأدوات شعبية' : 'Trending Tools'}
+            </p>
+            <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
+              {featuredTools.slice(0, 6).map((tool) => (
+                <Link key={tool.slug} href={`${base}/tools/${tool.slug}`}
+                  className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-800/60 hover:border-violet-500/50 hover:bg-gray-800/40 transition-all"
+                  style={{ background: 'rgba(13,17,23,0.8)' }}>
+                  <span className="text-base">{CATEGORY_ICONS[tool.category]}</span>
+                  <span className="text-sm text-gray-300 font-medium whitespace-nowrap">{tool.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -216,6 +236,13 @@ export default async function HomePage({ params, searchParams }: PageProps) {
               </div>
             </div>
           </section>
+        )}
+
+        {/* Newsletter CTA */}
+        {!isFiltered && (
+          <div className="mt-12">
+            <NewsletterCTA locale={locale} />
+          </div>
         )}
 
         {/* Bottom Ad */}

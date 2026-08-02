@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getTranslations, getLocale } from "next-intl/server"
+import FooterNewsletter from '@/components/FooterNewsletter'
 
 export default async function Footer() {
   const locale = await getLocale()
@@ -93,6 +94,9 @@ export default async function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* Newsletter mini */}
+        <FooterNewsletter isRTL={isRTL} />
 
         {/* Bottom bar */}
         <div className="border-t border-gray-800/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">

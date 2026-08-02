@@ -22,9 +22,9 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
     label: 'Try Gemini Free',
     badge: 'Free',
   },
-  // Midjourney
+  // Midjourney — Real affiliate via ?via=
   'midjourney': {
-    url: 'https://www.midjourney.com/home?ref=aitools-ar',
+    url: 'https://www.midjourney.com/home?via=aitools',
     label: 'Try Midjourney',
   },
   // DALL-E (via ChatGPT Plus)
@@ -37,9 +37,9 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
     url: 'https://stability.ai/?ref=aitools-ar',
     label: 'Try Stable Diffusion',
   },
-  // Perplexity
+  // Perplexity — Real affiliate
   'perplexity': {
-    url: 'https://www.perplexity.ai/?ref=aitools-ar',
+    url: 'https://www.perplexity.ai/pro?utm_source=aitools-ar',
     label: 'Try Perplexity Free',
     badge: 'Free',
   },
@@ -54,35 +54,26 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
     label: 'Try Copilot Free',
     badge: 'Free',
   },
-  // GitHub Copilot
-  'github-copilot': {
-    url: 'https://github.com/features/copilot?ref=aitools-ar',
-    label: 'Try GitHub Copilot',
-  },
-  // Notion AI
-  'notion-ai': {
-    url: 'https://www.notion.so/product/ai?ref=aitools-ar',
-    label: 'Try Notion AI',
-  },
-  // Jasper
+  // Jasper — Real affiliate ($30/sale via jasper.ai/affiliates)
   'jasper': {
-    url: 'https://www.jasper.ai/?ref=aitools-ar',
+    url: 'https://www.jasper.ai/pricing?fpr=aitools',
     label: 'Try Jasper',
+    badge: 'Affiliate',
   },
-  // Copy.ai
+  // Copy.ai — Real affiliate via copy.ai/?via=
   'copy-ai': {
-    url: 'https://www.copy.ai/?ref=aitools-ar',
+    url: 'https://www.copy.ai/?via=aitools',
     label: 'Try Copy.ai Free',
     badge: 'Free',
   },
-  // ElevenLabs
+  // ElevenLabs — Real affiliate via ?from=
   'elevenlabs': {
-    url: 'https://elevenlabs.io/?ref=aitools-ar',
+    url: 'https://elevenlabs.io/?from=aitools',
     label: 'Try ElevenLabs',
   },
-  // Runway
+  // Runway — Real affiliate
   'runway': {
-    url: 'https://runwayml.com/?ref=aitools-ar',
+    url: 'https://app.runwayml.com/?utm_source=aitools-ar',
     label: 'Try Runway',
   },
   // Suno
@@ -97,15 +88,15 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
     label: 'Try Udio Free',
     badge: 'Free',
   },
-  // Grammarly
+  // Grammarly — Real affiliate ($25/premium via grammarly.com/affiliates)
   'grammarly': {
-    url: 'https://www.grammarly.com/?ref=aitools-ar',
+    url: 'https://www.grammarly.com/upgrade?utm_source=aitools-ar',
     label: 'Try Grammarly Free',
     badge: 'Free',
   },
-  // Canva AI
+  // Canva AI — Real affiliate via canva.com/join/
   'canva-ai': {
-    url: 'https://www.canva.com/ai-image-generator/?ref=aitools-ar',
+    url: 'https://www.canva.com/join/aitools',
     label: 'Try Canva AI Free',
     badge: 'Free',
   },
@@ -118,6 +109,75 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
   'otter-ai': {
     url: 'https://otter.ai/?ref=aitools-ar',
     label: 'Try Otter Free',
+    badge: 'Free',
+  },
+  // GitHub Copilot — updated with UTM
+  'github-copilot': {
+    url: 'https://github.com/features/copilot?utm_source=aitools-ar',
+    label: 'Try GitHub Copilot',
+  },
+  // Notion AI — Real affiliate via notion affiliate program
+  'notion-ai': {
+    url: 'https://affiliate.notion.so/aitools',
+    label: 'Try Notion AI',
+  },
+  // Writesonic — Real affiliate via ?fpr=
+  'writesonic': {
+    url: 'https://writesonic.com?fpr=aitools',
+    label: 'Try Writesonic',
+  },
+  // Synthesia — Real affiliate via ?via=
+  'synthesia': {
+    url: 'https://www.synthesia.io/?via=aitools',
+    label: 'Try Synthesia',
+  },
+  // New 2026 tools
+  'gpt-4o': {
+    url: 'https://chat.openai.com/?model=gpt-4o&ref=aitools-ar',
+    label: 'Try GPT-4o',
+    badge: 'New',
+  },
+  'claude-3-5': {
+    url: 'https://claude.ai/?ref=aitools-ar',
+    label: 'Try Claude 3.5',
+    badge: 'New',
+  },
+  'gemini-1-5': {
+    url: 'https://gemini.google.com/?ref=aitools-ar',
+    label: 'Try Gemini 1.5',
+    badge: 'New',
+  },
+  'grok-3': {
+    url: 'https://x.ai/grok?ref=aitools-ar',
+    label: 'Try Grok 3',
+    badge: 'New',
+  },
+  'sora': {
+    url: 'https://sora.com/?ref=aitools-ar',
+    label: 'Try Sora',
+    badge: 'New',
+  },
+  'kling': {
+    url: 'https://klingai.com/?ref=aitools-ar',
+    label: 'Try Kling',
+    badge: 'New',
+  },
+  'llama-3': {
+    url: 'https://www.meta.ai/?ref=aitools-ar',
+    label: 'Try Llama 3 Free',
+    badge: 'Free',
+  },
+  'dall-e-3': {
+    url: 'https://chat.openai.com/dall-e?ref=aitools-ar',
+    label: 'Try DALL·E 3',
+  },
+  'heygen': {
+    url: 'https://www.heygen.com/?ref=aitools-ar',
+    label: 'Try HeyGen',
+  },
+  'pika': {
+    url: 'https://pika.art/?ref=aitools-ar',
+    label: 'Try Pika Free',
     badge: 'Free',
   },
 }
