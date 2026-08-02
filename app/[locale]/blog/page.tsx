@@ -29,7 +29,7 @@ export default async function BlogPage({ params }: Props) {
   const { locale } = params
   const t = await getTranslations('blog')
   const base = `/${locale}`
-  const posts = getRecentPosts(6, locale)
+  const posts = getRecentPosts(20, locale)
   const featured = posts[0]
   const rest = posts.slice(1)
 

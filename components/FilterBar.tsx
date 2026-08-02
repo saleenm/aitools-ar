@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
+import { useRef, useCallback } from 'react'
 import { ToolCategory, CATEGORY_ICONS } from '@/lib/types'
 
 const CATEGORY_KEYS: ToolCategory[] = ['chatbot','image','video','audio','writing','code','productivity','seo','design','data']
@@ -15,6 +16,7 @@ export default function FilterBar() {
   const activeCategory = params.get('category') || 'all'
   const activePricing = params.get('pricing') || 'all'
   const activeSearch = params.get('q') || ''
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   function update(key: string, value: string) {
     const p = new URLSearchParams(params.toString())
@@ -22,6 +24,14 @@ export default function FilterBar() {
     else p.set(key, value)
     router.push(`/${locale}?${p.toString()}`)
   }
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    debounceRef.current = setTimeout(() => {
+      update('q', value)
+    }, 300)
+  }, [params, locale]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const CATEGORIES = [
     { value: 'all', label: t('all'), icon: '🌐' },
@@ -43,8 +53,7 @@ export default function FilterBar() {
           type="text"
           defaultValue={activeSearch}
           placeholder={t('searchPlaceholder')}
-          onKeyDown={(e) => { if (e.key === 'Enter') update('q', (e.target as HTMLInputElement).value) }}
-          onChange={(e) => { if (!e.target.value) update('q', '') }}
+          onChange={handleSearchChange}
           className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 pr-10 text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 transition-colors text-sm"
         />
       </div>

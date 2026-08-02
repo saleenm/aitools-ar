@@ -48,6 +48,8 @@ const TOP_COMPS = [
   ['chatgpt', 'claude'],
   ['midjourney', 'dall-e-3'],
   ['claude', 'gemini'],
+  ['chatgpt', 'perplexity'],
+  ['github-copilot', 'chatgpt'],
 ]
 
 export default async function HomePage({ params, searchParams }: PageProps) {

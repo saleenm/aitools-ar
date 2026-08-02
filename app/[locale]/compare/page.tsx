@@ -26,12 +26,26 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 const PAIRS = [
-  { slugs: 'chatgpt-vs-gemini',      names: ['ChatGPT', 'Gemini'] },
-  { slugs: 'chatgpt-vs-claude',       names: ['ChatGPT', 'Claude'] },
-  { slugs: 'midjourney-vs-dall-e-3',  names: ['Midjourney', 'DALL·E 3'] },
-  { slugs: 'gemini-vs-claude',        names: ['Gemini', 'Claude'] },
-  { slugs: 'chatgpt-vs-perplexity',   names: ['ChatGPT', 'Perplexity'] },
-  { slugs: 'elevenlabs-vs-runway-ml', names: ['ElevenLabs', 'Runway'] },
+  { slugs: 'chatgpt-vs-gemini',          names: ['ChatGPT', 'Gemini'] },
+  { slugs: 'chatgpt-vs-claude',           names: ['ChatGPT', 'Claude'] },
+  { slugs: 'gemini-vs-claude',            names: ['Gemini', 'Claude'] },
+  { slugs: 'chatgpt-vs-perplexity',       names: ['ChatGPT', 'Perplexity'] },
+  { slugs: 'claude-vs-perplexity',        names: ['Claude', 'Perplexity'] },
+  { slugs: 'chatgpt-vs-grok',             names: ['ChatGPT', 'Grok'] },
+  { slugs: 'claude-vs-grok',              names: ['Claude', 'Grok'] },
+  { slugs: 'midjourney-vs-dall-e-3',      names: ['Midjourney', 'DALL·E 3'] },
+  { slugs: 'midjourney-vs-stable-diffusion', names: ['Midjourney', 'Stable Diffusion'] },
+  { slugs: 'dall-e-3-vs-stable-diffusion',   names: ['DALL·E 3', 'Stable Diffusion'] },
+  { slugs: 'midjourney-vs-adobe-firefly', names: ['Midjourney', 'Adobe Firefly'] },
+  { slugs: 'jasper-vs-copy-ai',           names: ['Jasper', 'Copy.ai'] },
+  { slugs: 'grammarly-vs-jasper',         names: ['Grammarly', 'Jasper'] },
+  { slugs: 'chatgpt-vs-jasper',           names: ['ChatGPT', 'Jasper'] },
+  { slugs: 'elevenlabs-vs-suno',          names: ['ElevenLabs', 'Suno'] },
+  { slugs: 'runway-vs-suno',              names: ['Runway', 'Suno'] },
+  { slugs: 'github-copilot-vs-chatgpt',   names: ['GitHub Copilot', 'ChatGPT'] },
+  { slugs: 'notion-ai-vs-chatgpt',        names: ['Notion AI', 'ChatGPT'] },
+  { slugs: 'chatgpt-vs-copilot',          names: ['ChatGPT', 'Copilot'] },
+  { slugs: 'gemini-vs-perplexity',        names: ['Gemini', 'Perplexity'] },
 ]
 
 interface Props { params: { locale: string } }

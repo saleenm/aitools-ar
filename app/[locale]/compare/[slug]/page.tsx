@@ -40,11 +40,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const pairs = [
+    // Core chatbot comparisons
     'chatgpt-vs-gemini',
     'chatgpt-vs-claude',
-    'midjourney-vs-dall-e-3',
     'gemini-vs-claude',
     'chatgpt-vs-perplexity',
+    'claude-vs-perplexity',
+    'gemini-vs-perplexity',
+    'chatgpt-vs-grok',
+    'claude-vs-grok',
+    // Image generation
+    'midjourney-vs-dall-e-3',
+    'midjourney-vs-stable-diffusion',
+    'dall-e-3-vs-stable-diffusion',
+    'midjourney-vs-adobe-firefly',
+    // Writing tools
+    'jasper-vs-copy-ai',
+    'grammarly-vs-jasper',
+    'chatgpt-vs-jasper',
+    // Video & audio
+    'runway-vs-suno',
+    'elevenlabs-vs-suno',
+    // Coding
+    'github-copilot-vs-chatgpt',
+    // Productivity
+    'notion-ai-vs-chatgpt',
+    'chatgpt-vs-copilot',
   ]
   const locales = ['ar', 'en', 'fr', 'es', 'tr', 'de']
   return locales.flatMap((locale) => pairs.map((slug) => ({ locale, slug })))

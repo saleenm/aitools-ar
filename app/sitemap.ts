@@ -25,9 +25,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const comparePages = [
     'chatgpt-vs-gemini',
     'chatgpt-vs-claude',
-    'midjourney-vs-dall-e-3',
     'gemini-vs-claude',
     'chatgpt-vs-perplexity',
+    'claude-vs-perplexity',
+    'gemini-vs-perplexity',
+    'chatgpt-vs-grok',
+    'claude-vs-grok',
+    'midjourney-vs-dall-e-3',
+    'midjourney-vs-stable-diffusion',
+    'dall-e-3-vs-stable-diffusion',
+    'midjourney-vs-adobe-firefly',
+    'jasper-vs-copy-ai',
+    'grammarly-vs-jasper',
+    'chatgpt-vs-jasper',
+    'runway-vs-suno',
+    'elevenlabs-vs-suno',
+    'github-copilot-vs-chatgpt',
+    'notion-ai-vs-chatgpt',
+    'chatgpt-vs-copilot',
   ].flatMap((slug) => localizedUrls(`/compare/${slug}`, 0.7, 'monthly'))
 
   const blogPages = posts.flatMap((post) =>
