@@ -68,7 +68,7 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
   },
   // ElevenLabs — Real affiliate via ?from=
   'elevenlabs': {
-    url: 'https://elevenlabs.io/?from=aitools',
+    url: 'https://try.elevenlabs.io/5sa8ahmfyk26',
     label: 'Try ElevenLabs',
   },
   // Runway — Real affiliate
