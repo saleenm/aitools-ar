@@ -71,6 +71,7 @@ export default function AIChatbot({ locale = 'en' }: { locale?: string }) {
     if (open && messages.length === 0) {
       setMessages([{ role: 'assistant', text: c.welcome }])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   useEffect(() => {
