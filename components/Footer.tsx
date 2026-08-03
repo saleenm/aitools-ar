@@ -85,6 +85,7 @@ export default async function Footer() {
             </h3>
             <ul className="space-y-2 text-sm text-gray-500">
               <li><Link href={`${base}/blog`} className="hover:text-violet-400 transition-colors">{isRTL ? 'المدونة' : 'Blog'}</Link></li>
+              <li><Link href={`${base}/professions`} className="hover:text-violet-400 transition-colors">{isRTL ? 'المهن' : 'Professions'}</Link></li>
               <li><Link href={`${base}/categories`} className="hover:text-violet-400 transition-colors">{isRTL ? 'التصنيفات' : 'Categories'}</Link></li>
               <li><Link href={`${base}/compare`} className="hover:text-violet-400 transition-colors">{isRTL ? 'المقارنة' : 'Compare'}</Link></li>
               <li><Link href={`${base}/submit`} className="hover:text-violet-400 transition-colors">{isRTL ? 'أضف أداة' : 'Submit Tool'}</Link></li>
