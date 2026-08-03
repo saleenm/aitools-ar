@@ -279,6 +279,42 @@ export default async function HomePage({ params, searchParams }: PageProps) {
           </section>
         )}
 
+        {/* ── PROFESSIONS CTA ── */}
+        {!isFiltered && (
+          <section className="mt-12">
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                🧑‍💼 {isRTL ? 'أدوات AI حسب المهنة' : 'AI Tools by Profession'}
+              </p>
+              <Link href={`${base}/professions`} className="text-xs text-violet-400 hover:text-violet-300 transition-colors">
+                {isRTL ? 'عرض الكل ←' : 'View all →'}
+              </Link>
+            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+              {[
+                { emoji: '⚖️', label: { ar: 'محامون', en: 'Lawyers', fr: 'Avocats', es: 'Abogados', tr: 'Avukatlar', de: 'Anwälte' }, slug: 'ai-tools-for-lawyers-2026' },
+                { emoji: '🏗️', label: { ar: 'معماريون', en: 'Architects', fr: 'Architectes', es: 'Arquitectos', tr: 'Mimarlar', de: 'Architekten' }, slug: 'ai-tools-for-architects-2026' },
+                { emoji: '🏥', label: { ar: 'أطباء', en: 'Doctors', fr: 'Médecins', es: 'Médicos', tr: 'Doktorlar', de: 'Ärzte' }, slug: 'ai-tools-for-doctors-2026' },
+                { emoji: '📚', label: { ar: 'معلمون', en: 'Teachers', fr: 'Enseignants', es: 'Maestros', tr: 'Öğretmenler', de: 'Lehrer' }, slug: 'ai-tools-for-teachers-2026' },
+                { emoji: '💰', label: { ar: 'محاسبون', en: 'Accountants', fr: 'Comptables', es: 'Contables', tr: 'Muhasebeciler', de: 'Buchhalter' }, slug: 'ai-tools-for-accountants-2026' },
+                { emoji: '📊', label: { ar: 'مسوقون', en: 'Marketers', fr: 'Marketeurs', es: 'Marketeros', tr: 'Pazarlamacılar', de: 'Marketer' }, slug: 'ai-tools-for-marketers-2026' },
+                { emoji: '🏠', label: { ar: 'عقارات', en: 'Real Estate', fr: 'Immobilier', es: 'Inmobiliaria', tr: 'Gayrimenkul', de: 'Immobilien' }, slug: 'ai-tools-for-real-estate-2026' },
+                { emoji: '👔', label: { ar: 'HR', en: 'HR', fr: 'RH', es: 'RRHH', tr: 'İK', de: 'HR' }, slug: 'ai-tools-for-hr-2026' },
+                { emoji: '⚙️', label: { ar: 'مهندسون', en: 'Engineers', fr: 'Ingénieurs', es: 'Ingenieros', tr: 'Mühendisler', de: 'Ingenieure' }, slug: 'ai-tools-for-engineers-2026' },
+              ].map((p) => (
+                <Link key={p.slug} href={`${base}/blog/${p.slug}`}
+                  className="flex flex-col items-center gap-1.5 p-3 rounded-xl border border-gray-800/60 hover:border-violet-500/40 hover:bg-gray-800/30 transition-all text-center group"
+                  style={{ background: 'rgba(13,17,23,0.8)' }}>
+                  <span className="text-2xl">{p.emoji}</span>
+                  <span className="text-[11px] text-gray-400 font-medium group-hover:text-violet-300 transition-colors leading-tight">
+                    {p.label[locale as keyof typeof p.label] || p.label.en}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Newsletter CTA */}
         {!isFiltered && (
           <div className="mt-12">
