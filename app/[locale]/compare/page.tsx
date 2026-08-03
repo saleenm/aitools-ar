@@ -46,6 +46,27 @@ const PAIRS = [
   { slugs: 'notion-ai-vs-chatgpt',        names: ['Notion AI', 'ChatGPT'] },
   { slugs: 'chatgpt-vs-copilot',          names: ['ChatGPT', 'Copilot'] },
   { slugs: 'gemini-vs-perplexity',        names: ['Gemini', 'Perplexity'] },
+  // 20 new pairs
+  { slugs: 'chatgpt-vs-writesonic',       names: ['ChatGPT', 'Writesonic'] },
+  { slugs: 'claude-vs-gemini',            names: ['Claude', 'Gemini'] },
+  { slugs: 'perplexity-vs-grok',          names: ['Perplexity', 'Grok'] },
+  { slugs: 'chatgpt-vs-canva-ai',         names: ['ChatGPT', 'Canva AI'] },
+  { slugs: 'midjourney-vs-kling',         names: ['Midjourney', 'Kling'] },
+  { slugs: 'runway-vs-pika',              names: ['Runway', 'Pika'] },
+  { slugs: 'heygen-vs-synthesia',         names: ['HeyGen', 'Synthesia'] },
+  { slugs: 'elevenlabs-vs-udio',          names: ['ElevenLabs', 'Udio'] },
+  { slugs: 'suno-vs-udio',               names: ['Suno', 'Udio'] },
+  { slugs: 'github-copilot-vs-cursor',    names: ['GitHub Copilot', 'Cursor'] },
+  { slugs: 'claude-vs-copilot',          names: ['Claude', 'Copilot'] },
+  { slugs: 'grammarly-vs-chatgpt',        names: ['Grammarly', 'ChatGPT'] },
+  { slugs: 'notion-ai-vs-claude',         names: ['Notion AI', 'Claude'] },
+  { slugs: 'dall-e-3-vs-adobe-firefly',   names: ['DALL·E 3', 'Adobe Firefly'] },
+  { slugs: 'stable-diffusion-vs-adobe-firefly', names: ['Stable Diffusion', 'Adobe Firefly'] },
+  { slugs: 'chatgpt-vs-llama-3',          names: ['ChatGPT', 'Llama 3'] },
+  { slugs: 'claude-vs-llama-3',           names: ['Claude', 'Llama 3'] },
+  { slugs: 'gemini-vs-grok',              names: ['Gemini', 'Grok'] },
+  { slugs: 'runway-vs-kling',             names: ['Runway', 'Kling'] },
+  { slugs: 'chatgpt-vs-grammarly',        names: ['ChatGPT', 'Grammarly'] },
 ]
 
 interface Props { params: { locale: string } }
