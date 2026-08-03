@@ -108,6 +108,25 @@ export async function generateStaticParams() {
     'perplexity-vs-elicit',
     'chatgpt-vs-gemini-advanced',
     'claude-vs-grok-3',
+    // Profession pairs
+    'harvey-vs-casetext',
+    'chatgpt-vs-harvey',
+    'midjourney-vs-vizcom',
+    'chatgpt-vs-autodesk-ai',
+    'chatgpt-vs-glass-ai',
+    'perplexity-vs-elicit-research',
+    'khanmigo-vs-chatgpt',
+    'chatgpt-vs-synthesis-tutor',
+    'chatgpt-vs-intuit-assist',
+    'claude-vs-chatgpt-finance',
+    'jasper-vs-hubspot-ai',
+    'semrush-vs-chatgpt',
+    'chatgpt-vs-rex-ai',
+    'zillow-ai-vs-chatgpt',
+    'chatgpt-vs-workday-ai',
+    'paradox-vs-chatgpt',
+    'tabnine-vs-github-copilot',
+    'codeium-vs-github-copilot',
   ]
   const locales = ['ar', 'en', 'fr', 'es', 'tr', 'de']
   return locales.flatMap((locale) => pairs.map((slug) => ({ locale, slug })))

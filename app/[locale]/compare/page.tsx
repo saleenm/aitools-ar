@@ -88,6 +88,25 @@ const PAIRS = [
   { slugs: 'perplexity-vs-elicit',        names: ['Perplexity', 'Elicit'] },
   { slugs: 'chatgpt-vs-gemini-advanced',  names: ['ChatGPT', 'Gemini Advanced'] },
   { slugs: 'claude-vs-grok-3',            names: ['Claude', 'Grok 3'] },
+  // Profession pairs
+  { slugs: 'harvey-vs-casetext',          names: ['Harvey AI', 'Casetext'] },
+  { slugs: 'chatgpt-vs-harvey',           names: ['ChatGPT', 'Harvey AI'] },
+  { slugs: 'midjourney-vs-vizcom',        names: ['Midjourney', 'Vizcom'] },
+  { slugs: 'chatgpt-vs-autodesk-ai',      names: ['ChatGPT', 'Autodesk AI'] },
+  { slugs: 'chatgpt-vs-glass-ai',         names: ['ChatGPT', 'Glass AI'] },
+  { slugs: 'perplexity-vs-elicit-research', names: ['Perplexity', 'Elicit (Research)'] },
+  { slugs: 'khanmigo-vs-chatgpt',         names: ['Khanmigo', 'ChatGPT'] },
+  { slugs: 'chatgpt-vs-synthesis-tutor',  names: ['ChatGPT', 'Synthesis Tutor'] },
+  { slugs: 'chatgpt-vs-intuit-assist',    names: ['ChatGPT', 'Intuit Assist'] },
+  { slugs: 'claude-vs-chatgpt-finance',   names: ['Claude', 'ChatGPT (Finance)'] },
+  { slugs: 'jasper-vs-hubspot-ai',        names: ['Jasper', 'HubSpot AI'] },
+  { slugs: 'semrush-vs-chatgpt',          names: ['SEMrush AI', 'ChatGPT'] },
+  { slugs: 'chatgpt-vs-rex-ai',           names: ['ChatGPT', 'Rex AI'] },
+  { slugs: 'zillow-ai-vs-chatgpt',        names: ['Zillow AI', 'ChatGPT'] },
+  { slugs: 'chatgpt-vs-workday-ai',       names: ['ChatGPT', 'Workday AI'] },
+  { slugs: 'paradox-vs-chatgpt',          names: ['Paradox AI', 'ChatGPT'] },
+  { slugs: 'tabnine-vs-github-copilot',   names: ['Tabnine', 'GitHub Copilot'] },
+  { slugs: 'codeium-vs-github-copilot',   names: ['Codeium', 'GitHub Copilot'] },
 ]
 
 interface Props { params: { locale: string } }
