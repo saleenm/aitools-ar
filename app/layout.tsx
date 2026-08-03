@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Cairo } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const cairo = Cairo({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body suppressHydrationWarning className="font-cairo bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
         {children}
+        <Analytics />
       </body>
     </html>
   )

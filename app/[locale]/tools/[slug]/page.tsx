@@ -6,6 +6,7 @@ import { getToolBySlug, getTools } from '@/lib/data'
 import { CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
+import RatingWidget from '@/components/RatingWidget'
 import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
 import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedDescription } from '@/lib/tool-i18n'
 import { getAffiliateLink, AFFILIATE_CTA_LABELS } from '@/lib/affiliate'
@@ -133,10 +134,20 @@ export default async function ToolPage({ params }: Props) {
                 )}
               </div>
               <p className="text-gray-300 mb-4 text-sm leading-relaxed">{tagline}</p>
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-3">
                 <RatingStars rating={tool.rating} size="lg" />
                 <span className="text-white font-black text-lg">{tool.rating.toFixed(1)}</span>
                 <span className="text-gray-500 text-sm">({tool.reviews_count.toLocaleString()})</span>
+              </div>
+              <div className="mb-5">
+                <RatingWidget
+                  toolSlug={tool.slug}
+                  labels={{
+                    rate: locale === 'ar' ? 'قيّم هذه الأداة' : 'Rate this tool',
+                    rated: locale === 'ar' ? 'تقييمك' : 'Your rating',
+                    votes: locale === 'ar' ? 'تقييم' : 'votes',
+                  }}
+                />
               </div>
               <div className="flex flex-wrap gap-3">
                 {/* Affiliate CTA — prominent */}
