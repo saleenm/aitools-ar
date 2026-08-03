@@ -67,6 +67,27 @@ const PAIRS = [
   { slugs: 'gemini-vs-grok',              names: ['Gemini', 'Grok'] },
   { slugs: 'runway-vs-kling',             names: ['Runway', 'Kling'] },
   { slugs: 'chatgpt-vs-grammarly',        names: ['ChatGPT', 'Grammarly'] },
+  // 20 more pairs
+  { slugs: 'claude-vs-chatgpt-coding',    names: ['Claude', 'ChatGPT (Coding)'] },
+  { slugs: 'jasper-vs-writesonic',        names: ['Jasper', 'Writesonic'] },
+  { slugs: 'copy-ai-vs-writesonic',       names: ['Copy.ai', 'Writesonic'] },
+  { slugs: 'midjourney-vs-leonardo-ai',   names: ['Midjourney', 'Leonardo AI'] },
+  { slugs: 'dalle-3-vs-leonardo-ai',      names: ['DALL·E 3', 'Leonardo AI'] },
+  { slugs: 'elevenlabs-vs-murf',          names: ['ElevenLabs', 'Murf AI'] },
+  { slugs: 'chatgpt-vs-perplexity-research', names: ['ChatGPT', 'Perplexity (Research)'] },
+  { slugs: 'notion-ai-vs-obsidian',       names: ['Notion AI', 'Obsidian'] },
+  { slugs: 'canva-ai-vs-adobe-firefly',   names: ['Canva AI', 'Adobe Firefly'] },
+  { slugs: 'suno-vs-soundraw',            names: ['Suno', 'Soundraw'] },
+  { slugs: 'cursor-vs-github-copilot-pro',names: ['Cursor', 'GitHub Copilot Pro'] },
+  { slugs: 'chatgpt-vs-character-ai',     names: ['ChatGPT', 'Character.AI'] },
+  { slugs: 'deepl-vs-google-translate',   names: ['DeepL', 'Google Translate'] },
+  { slugs: 'claude-vs-deepl',             names: ['Claude', 'DeepL'] },
+  { slugs: 'zapier-vs-make',              names: ['Zapier', 'Make'] },
+  { slugs: 'gamma-vs-beautiful-ai',       names: ['Gamma', 'Beautiful.AI'] },
+  { slugs: 'intercom-vs-tidio',           names: ['Intercom AI', 'Tidio'] },
+  { slugs: 'perplexity-vs-elicit',        names: ['Perplexity', 'Elicit'] },
+  { slugs: 'chatgpt-vs-gemini-advanced',  names: ['ChatGPT', 'Gemini Advanced'] },
+  { slugs: 'claude-vs-grok-3',            names: ['Claude', 'Grok 3'] },
 ]
 
 interface Props { params: { locale: string } }
