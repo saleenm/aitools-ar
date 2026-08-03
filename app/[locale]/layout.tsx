@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import HtmlAttributes from '@/components/HtmlAttributes'
+import AIChatbot from '@/components/AIChatbot'
 
 const SUPPORTED = ['ar', 'en', 'fr', 'es', 'tr', 'de']
 
@@ -24,6 +25,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Header />
       <div className="flex-1">{children}</div>
       <Footer />
+      <AIChatbot locale={locale} />
     </NextIntlClientProvider>
   )
 }
