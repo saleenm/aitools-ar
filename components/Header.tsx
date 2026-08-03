@@ -50,6 +50,10 @@ export default function Header() {
             className={`px-3 py-2 rounded-lg transition-colors ${isActive(`${base}/blog`) ? 'text-white bg-gray-800/60' : 'text-gray-400 hover:text-white hover:bg-gray-800/40'}`}>
             {t('blog')}
           </Link>
+          <Link href={`${base}/professions`}
+            className={`px-3 py-2 rounded-lg transition-colors ${isActive(`${base}/professions`) ? 'text-white bg-gray-800/60' : 'text-gray-400 hover:text-white hover:bg-gray-800/40'}`}>
+            {t('professions')}
+          </Link>
         </nav>
 
         {/* Desktop Actions */}
@@ -90,6 +94,8 @@ export default function Header() {
           ))}
           <Link href={`${base}/blog`} onClick={() => setMenuOpen(false)}
             className="px-3 py-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors">{t('blog')}</Link>
+          <Link href={`${base}/professions`} onClick={() => setMenuOpen(false)}
+            className="px-3 py-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors">🧑‍💼 {t('professions')}</Link>
           <Link href={`${base}/compare`} onClick={() => setMenuOpen(false)}
             className="px-3 py-2.5 rounded-lg text-violet-400 hover:text-violet-300 hover:bg-violet-500/10 transition-colors">⚖️ {t('compare')}</Link>
           <Link href={`${base}/submit`} onClick={() => setMenuOpen(false)}
