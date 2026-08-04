@@ -92,6 +92,7 @@ export default async function Footer() {
               <li><Link href={`${base}/about`} className="hover:text-violet-400 transition-colors">{isRTL ? 'من نحن' : 'About Us'}</Link></li>
               <li><Link href={`${base}/contact`} className="hover:text-violet-400 transition-colors">{isRTL ? 'تواصل معنا' : 'Contact'}</Link></li>
               <li><Link href={`${base}/privacy`} className="hover:text-violet-400 transition-colors">{isRTL ? 'سياسة الخصوصية' : 'Privacy Policy'}</Link></li>
+              <li><Link href={`${base}/faq`} className="hover:text-violet-400 transition-colors">{isRTL ? 'الأسئلة الشائعة' : 'FAQ'}</Link></li>
             </ul>
           </div>
         </div>
