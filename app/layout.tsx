@@ -37,6 +37,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Google AdSense Auto Ads */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4272698055490735"
+          crossOrigin="anonymous"
+        />
       </head>
       <body suppressHydrationWarning className="font-cairo bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
         {children}
