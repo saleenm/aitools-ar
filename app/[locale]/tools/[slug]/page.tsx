@@ -10,6 +10,7 @@ import RatingWidget from '@/components/RatingWidget'
 import { buildAlternates, buildToolJsonLd, buildBreadcrumbJsonLd, buildFAQJsonLd } from '@/lib/seo'
 import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedDescription } from '@/lib/tool-i18n'
 import { getAffiliateLink, AFFILIATE_CTA_LABELS } from '@/lib/affiliate'
+import { getToolReview, generateTemplateReview } from '@/lib/tool-reviews'
 
 export const dynamic = 'force-dynamic'
 
@@ -72,6 +73,17 @@ export default async function ToolPage({ params }: Props) {
     { question: `Is ${tool.name} free?`, answer: tool.pricing === 'free' ? `Yes, ${tool.name} is free to use.` : `${tool.name} starts at $${tool.price_monthly}/month.` },
     { question: `What category is ${tool.name}?`, answer: `${tool.name} is an AI tool in the ${tool.category} category.` },
   ])
+
+  // Get review content
+  const specificReview = getToolReview(tool.slug)
+  const reviewData = specificReview
+    ? {
+        review: specificReview.review[locale as keyof typeof specificReview.review] ?? specificReview.review.en,
+        useCases: isArabic ? specificReview.useCases.ar : specificReview.useCases.en,
+        gettingStarted: isArabic ? specificReview.gettingStarted.ar : specificReview.gettingStarted.en,
+        verdict: isArabic ? specificReview.verdict.ar : specificReview.verdict.en,
+      }
+    : generateTemplateReview(tool.name, tool.category, tool.pricing, tool.price_monthly ?? null, locale)
 
   const softwareAppLd = {
     '@context': 'https://schema.org',
@@ -239,6 +251,56 @@ export default async function ToolPage({ params }: Props) {
                   </div>
                 ))}
               </div>
+            </section>
+
+            {/* Full Review */}
+            <section className="bg-gray-900/80 border border-gray-800/60 rounded-2xl p-6">
+              <h2 className="text-base font-black text-white mb-4 flex items-center gap-2">
+                <svg width="14" height="14" fill="none" stroke="#a78bfa" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                {isArabic ? `مراجعة ${tool.name} الكاملة` : `Full ${tool.name} Review`}
+              </h2>
+              <p className="text-gray-300 text-sm leading-relaxed">{reviewData.review}</p>
+            </section>
+
+            {/* Use Cases */}
+            <section className="bg-gray-900/80 border border-gray-800/60 rounded-2xl p-6">
+              <h2 className="text-base font-black text-white mb-4 flex items-center gap-2">
+                <svg width="14" height="14" fill="none" stroke="#a78bfa" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                {isArabic ? `حالات استخدام ${tool.name}` : `${tool.name} Use Cases`}
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {reviewData.useCases.map((uc, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-gray-800/50 border border-gray-700/40 rounded-xl p-3">
+                    <span className="w-6 h-6 rounded-lg bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-xs text-violet-300 font-bold flex-shrink-0">{i + 1}</span>
+                    <span className="text-sm text-gray-300">{uc}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Getting Started */}
+            <section className="bg-gray-900/80 border border-gray-800/60 rounded-2xl p-6">
+              <h2 className="text-base font-black text-white mb-4 flex items-center gap-2">
+                <svg width="14" height="14" fill="none" stroke="#a78bfa" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                {isArabic ? `كيف تبدأ مع ${tool.name}` : `Getting Started with ${tool.name}`}
+              </h2>
+              <ol className="space-y-3">
+                {reviewData.gettingStarted.map((step, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-violet-600/30 border border-violet-500/40 flex items-center justify-center text-xs text-violet-300 font-black flex-shrink-0">{i + 1}</span>
+                    <span className="text-sm text-gray-300 pt-0.5">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            {/* Verdict */}
+            <section className="rounded-2xl p-6" style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(109,40,217,0.06) 100%)', border: '1px solid rgba(139,92,246,0.25)' }}>
+              <h2 className="text-base font-black text-white mb-3 flex items-center gap-2">
+                <svg width="14" height="14" fill="#a78bfa" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                {isArabic ? 'الحكم النهائي' : 'Final Verdict'}
+              </h2>
+              <p className="text-gray-200 text-sm leading-relaxed font-medium">{reviewData.verdict}</p>
             </section>
           </div>
 
