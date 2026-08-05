@@ -1,0 +1,43 @@
+name: Daily Health Check
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 7:00 UTC = 10:00 صباحاً توقيت السعودية
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Check site is up
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-redirs 5 https://aitools-ar.vercel.app/ar)
+          echo "Site status: $STATUS"
+          if [ "$STATUS" = "200" ] || [ "$STATUS" = "304" ]; then
+            echo "✅ Site is up"
+          else
+            echo "❌ SITE DOWN — HTTP $STATUS"
+            exit 1
+          fi
+
+      - name: Check key pages
+        run: |
+          for path in "/ar" "/en" "/ar/tools/chatgpt" "/ar/compare/chatgpt-vs-gemini" "/ar/faq"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-redirs 5 "https://aitools-ar.vercel.app$path")
+            echo "  $path → $STATUS"
+            if [ "$STATUS" = "404" ] || [ "$STATUS" = "500" ] || [ "$STATUS" = "000" ]; then
+              echo "❌ ERROR on $path: $STATUS"
+              exit 1
+            fi
+          done
+          echo "✅ All key pages OK"
+
+      - name: Summary
+        run: |
+          echo ""
+          echo "✅ Health check complete — $(date)"
+          echo "   Site: https://aitools-ar.vercel.app"
