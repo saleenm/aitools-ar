@@ -107,6 +107,12 @@ const PAIRS = [
   { slugs: 'paradox-vs-chatgpt',          names: ['Paradox AI', 'ChatGPT'] },
   { slugs: 'tabnine-vs-github-copilot',   names: ['Tabnine', 'GitHub Copilot'] },
   { slugs: 'codeium-vs-github-copilot',   names: ['Codeium', 'GitHub Copilot'] },
+  // 5 new trending pairs 2026
+  { slugs: 'chatgpt-vs-deepseek',         names: ['ChatGPT', 'DeepSeek'] },
+  { slugs: 'gemini-vs-deepseek',          names: ['Gemini', 'DeepSeek'] },
+  { slugs: 'claude-vs-deepseek',          names: ['Claude', 'DeepSeek'] },
+  { slugs: 'cursor-vs-windsurf',          names: ['Cursor', 'Windsurf'] },
+  { slugs: 'midjourney-vs-flux',          names: ['Midjourney', 'Flux'] },
 ]
 
 interface Props { params: { locale: string } }

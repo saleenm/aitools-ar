@@ -127,6 +127,11 @@ export async function generateStaticParams() {
     'paradox-vs-chatgpt',
     'tabnine-vs-github-copilot',
     'codeium-vs-github-copilot',
+    'chatgpt-vs-deepseek',
+    'gemini-vs-deepseek',
+    'claude-vs-deepseek',
+    'cursor-vs-windsurf',
+    'midjourney-vs-flux',
   ]
   const locales = ['ar', 'en', 'fr', 'es', 'tr', 'de']
   return locales.flatMap((locale) => pairs.map((slug) => ({ locale, slug })))
