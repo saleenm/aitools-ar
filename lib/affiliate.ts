@@ -180,6 +180,12 @@ export const AFFILIATE_LINKS: Record<string, { url: string; label: string; badge
     label: 'Try Pika Free',
     badge: 'Free',
   },
+  // NordVPN — impact.com approved (40% commission)
+  'nordvpn': {
+    url: 'https://nordvpn.sjv.io/c/7544129/417838/7452',
+    label: 'احصل على NordVPN',
+    badge: '40% عمولة',
+  },
 }
 
 export function getAffiliateLink(slug: string) {

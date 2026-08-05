@@ -5,6 +5,7 @@ import FilterBar from '@/components/FilterBar'
 import ToolCard from '@/components/ToolCard'
 import TypewriterText from '@/components/AIHero'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import VPNBanner from '@/components/VPNBanner'
 import { getTools } from '@/lib/data'
 import { buildAlternates, buildWebsiteJsonLd } from '@/lib/seo'
 import { CATEGORY_ICONS, CATEGORY_LABELS } from '@/lib/types'
@@ -315,9 +316,16 @@ export default async function HomePage({ params, searchParams }: PageProps) {
           </section>
         )}
 
+        {/* VPN Banner */}
+        {!isFiltered && (
+          <div className="mt-8">
+            <VPNBanner locale={locale} />
+          </div>
+        )}
+
         {/* Newsletter CTA */}
         {!isFiltered && (
-          <div className="mt-12">
+          <div className="mt-8">
             <NewsletterCTA locale={locale} />
           </div>
         )}
