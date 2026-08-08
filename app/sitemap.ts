@@ -3,7 +3,9 @@ import { getAllSlugs } from '@/lib/data'
 import { getRecentPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://aitools-ar.vercel.app'
-const LOCALES = ['ar', 'en', 'fr', 'es', 'tr', 'de']
+// Submit only ar + en to Google for focused crawl budget.
+// Other locales stay accessible via hreflang.
+const LOCALES = ['ar', 'en']
 
 function localizedUrls(path: string, priority: number, changeFreq: 'daily' | 'weekly' | 'monthly') {
   return LOCALES.map((locale) => ({
