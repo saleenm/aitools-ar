@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
-import { getToolBySlug, getTools } from '@/lib/data'
+import { getToolBySlug, getTools, getAllSlugs } from '@/lib/data'
 import { CATEGORY_ICONS } from '@/lib/types'
 import RatingStars from '@/components/RatingStars'
 import ReviewSection from '@/components/ReviewSection'
@@ -12,10 +12,18 @@ import { getLocalizedPros, getLocalizedCons, getLocalizedFeatures, getLocalizedD
 import { getAffiliateLink, AFFILIATE_CTA_LABELS } from '@/lib/affiliate'
 import { getToolReview, generateTemplateReview } from '@/lib/tool-reviews'
 
-export const dynamic = 'force-dynamic'
+// ISR: rebuild tool pages at most once per hour.
+// RatingWidget fetches ratings client-side so no server-side dynamic data needed.
+export const revalidate = 3600
 
 interface Props {
   params: { locale: string; slug: string }
+}
+
+// Pre-render ar + en for all tools at build time; other locales on-demand with ISR.
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs()
+  return ['ar', 'en'].flatMap((locale) => slugs.map((slug) => ({ locale, slug })))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

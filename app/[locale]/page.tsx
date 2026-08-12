@@ -11,8 +11,8 @@ import { buildAlternates, buildWebsiteJsonLd } from '@/lib/seo'
 import { CATEGORY_ICONS, CATEGORY_LABELS } from '@/lib/types'
 import Link from 'next/link'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ISR: homepage tool list revalidated every 30 minutes.
+export const revalidate = 1800
 
 const META: Record<string, { title: string; description: string }> = {
   ar: { title: 'أدوات AI | دليل أفضل أدوات الذكاء الاصطناعي', description: 'اكتشف وقارن أفضل أدوات الذكاء الاصطناعي: ChatGPT، Gemini، Midjourney، Claude وأكثر من 100 أداة مع مراجعات شاملة.' },

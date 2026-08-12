@@ -5,7 +5,7 @@ import { getTools } from '@/lib/data'
 import { CATEGORY_ICONS, CATEGORY_KEYS } from '@/lib/types'
 import { buildAlternates } from '@/lib/seo'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 interface Props { params: { locale: string } }
 

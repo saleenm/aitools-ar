@@ -8,7 +8,8 @@ import RatingStars from '@/components/RatingStars'
 import { buildAlternates } from '@/lib/seo'
 import { getLocalizedPros, getLocalizedCons } from '@/lib/tool-i18n'
 
-export const dynamic = 'force-dynamic'
+// ISR: compare pages are mostly static content, revalidate hourly.
+export const revalidate = 3600
 
 interface Props {
   params: { locale: string; slug: string }
@@ -133,8 +134,8 @@ export async function generateStaticParams() {
     'cursor-vs-windsurf',
     'midjourney-vs-flux',
   ]
-  const locales = ['ar', 'en', 'fr', 'es', 'tr', 'de']
-  return locales.flatMap((locale) => pairs.map((slug) => ({ locale, slug })))
+  // Pre-render ar + en only; other locales served on-demand with ISR.
+  return ['ar', 'en'].flatMap((locale) => pairs.map((slug) => ({ locale, slug })))
 }
 
 function ScoreBar({ value, max = 5 }: { value: number; max?: number }) {
