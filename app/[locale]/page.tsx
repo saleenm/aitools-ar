@@ -7,7 +7,7 @@ import TypewriterText from '@/components/AIHero'
 import NewsletterCTA from '@/components/NewsletterCTA'
 import VPNBanner from '@/components/VPNBanner'
 import { getTools } from '@/lib/data'
-import { buildAlternates, buildWebsiteJsonLd } from '@/lib/seo'
+import { buildAlternates, buildWebsiteJsonLd, buildOrganizationJsonLd } from '@/lib/seo'
 import { CATEGORY_ICONS, CATEGORY_LABELS } from '@/lib/types'
 import Link from 'next/link'
 
@@ -66,10 +66,12 @@ export default async function HomePage({ params, searchParams }: PageProps) {
   const base = `/${locale}`
 
   const jsonLd = buildWebsiteJsonLd()
+  const orgLd = buildOrganizationJsonLd()
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
 
       {/* ── HERO ── */}
       {!isFiltered && (

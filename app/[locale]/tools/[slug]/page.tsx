@@ -102,8 +102,10 @@ export default async function ToolPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: tool.name,
+    alternateName: tool.name_ar || undefined,
     applicationCategory: 'AIApplication',
     operatingSystem: 'Web',
+    inLanguage: ['ar', 'en'],
     description: tagline,
     url: tool.website_url,
     offers: {
@@ -119,7 +121,29 @@ export default async function ToolPage({ params }: Props) {
       bestRating: '5',
       worstRating: '1',
     },
+    featureList: reviewData.useCases.slice(0, 5).join(', '),
   }
+
+  // Review schema — exposes the editorial verdict as a structured Review for rich snippets
+  const reviewLd = reviewData.verdict ? {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: {
+      '@type': 'SoftwareApplication',
+      name: tool.name,
+      url: tool.website_url,
+    },
+    author: { '@type': 'Organization', name: 'AI Tools', url: 'https://aitools-ar.vercel.app' },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(tool.rating),
+      bestRating: '5',
+      worstRating: '1',
+    },
+    reviewBody: reviewData.verdict,
+    inLanguage: isArabic ? 'ar' : 'en',
+    datePublished: new Date().toISOString().split('T')[0],
+  } : null
 
   return (
     <>
@@ -127,6 +151,7 @@ export default async function ToolPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppLd) }} />
+      {reviewLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewLd) }} />}
       <main className="max-w-5xl mx-auto px-4 py-10" style={{ background: '#030712' }}>
         {/* Breadcrumb */}
         <nav className="text-xs text-gray-500 mb-6 flex items-center gap-1.5">

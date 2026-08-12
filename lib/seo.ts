@@ -86,12 +86,34 @@ export function buildWebsiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'AI Tools',
+    alternateName: 'أدوات الذكاء الاصطناعي',
     url: BASE_URL,
-    description: 'Discover and compare the best AI tools — reviews, comparisons, and guides in 6 languages.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${BASE_URL}/en?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    description: 'Discover and compare the best AI tools — reviews, comparisons, and guides in Arabic and English.',
+    inLanguage: ['ar', 'en'],
+    potentialAction: [
+      {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}/ar?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
+      {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}/en?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
+    ],
+  }
+}
+
+export function buildOrganizationJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AI Tools',
+    alternateName: 'أدوات AI',
+    url: BASE_URL,
+    logo: { '@type': 'ImageObject', url: `${BASE_URL}/logos/icon-512.png`, width: 512, height: 512 },
+    description: 'دليل أفضل أدوات الذكاء الاصطناعي — مراجعات شاملة ومقارنات باللغتين العربية والإنجليزية',
+    sameAs: ['https://aitools-ar.vercel.app'],
   }
 }
