@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   )
 
   return [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
+    // BASE_URL without locale excluded — redirects to /ar/ which causes "redirect" warnings in GSC
     ...localizedUrls('', 1.0, 'daily'),
     ...localizedUrls('/categories', 0.8, 'weekly'),
     ...localizedUrls('/compare', 0.7, 'weekly'),
@@ -84,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...localizedUrls('/professions', 0.8, 'weekly'),
     ...localizedUrls('/about', 0.6, 'monthly'),
     ...localizedUrls('/privacy', 0.5, 'monthly'),
-    ...localizedUrls('/contact', 0.6, 'monthly'),
+    // contact + submit excluded — form pages with noindex
     ...localizedUrls('/faq', 0.7, 'monthly'),
     ...toolPages,
     ...comparePages,
