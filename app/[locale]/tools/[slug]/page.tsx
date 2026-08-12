@@ -33,7 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const isArabic = locale === 'ar'
   const tagline = !isArabic && tool.tagline_en ? tool.tagline_en : tool.tagline_ar
-  const title = `${tool.name} — ${tagline} | AI Tools`
+  // For Arabic, include the Arabic name (tool.name_ar) in the title so the page matches
+  // Arabic search queries (e.g. "جيميني" for Gemini, "شات جي بي تي" for ChatGPT).
+  const arTitle = tool.name_ar
+    ? `${tool.name} (${tool.name_ar}) — ${tagline} | AI Tools`
+    : `${tool.name} — ${tagline} | AI Tools`
+  const title = isArabic ? arTitle : `${tool.name} — ${tagline} | AI Tools`
   const description = !isArabic && tool.tagline_en ? tool.tagline_en : tool.description_ar.slice(0, 160)
 
   return {
